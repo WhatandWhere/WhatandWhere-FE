@@ -1,0 +1,50 @@
+/* EntryPage.css */
+.entry-page {
+  background-image: url('/Users/atahankaragoz/Documents/GitHub/WhatandWhere-FE/uni-whatandwhere/public/logo192.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  height: 100vh; /* Make the background cover the whole screen height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%; /* Make it a circle */
+  background-color: #fff; /* Background color for the circle */
+  position: absolute;
+  top: 20px; /* Adjust the top position */
+  left: 20px; /* Adjust the left position */
+}
+
+.header {
+  font-size: 24px;
+  color: #fff;
+  margin-left: 70px; /* Add spacing between the logo and header */
+}
+
+/* Style the buttons */
+.entry-button {
+  background: linear-gradient(to bottom, #ff6600, #ff9900);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin: 10px;
+  border-radius: 5px; /* Add rounded corners */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+/* Hover effect for buttons */
+.entry-button:hover {
+  background: linear-gradient(to bottom, #ff9900, #ff6600);
+  transition: background 0.3s ease;
+}
