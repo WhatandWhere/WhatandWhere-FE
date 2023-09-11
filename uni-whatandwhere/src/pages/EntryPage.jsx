@@ -1,5 +1,6 @@
 import React from 'react';
 import Entry from '../components/Entry.jsx';
+
 import '../components/design-files-css/EntryPage.css';
 
 const EntryPage = () => {

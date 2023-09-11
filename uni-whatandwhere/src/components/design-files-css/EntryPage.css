@@ -1,6 +1,5 @@
-/* EntryPage.css */
 .entry-page {
-  background-image: url('/Users/atahankaragoz/Documents/GitHub/WhatandWhere-FE/uni-whatandwhere/public/logo192.png');
+  background-color: #101820;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -12,39 +11,91 @@
   justify-content: center;
 }
 
-.logo {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%; /* Make it a circle */
-  background-color: #fff; /* Background color for the circle */
+.logo-header-container {
+  display: flex;
+  align-items: center;
   position: absolute;
-  top: 20px; /* Adjust the top position */
-  left: 20px; /* Adjust the left position */
+  top: 50px;
+  left: 50px;
+}
+
+.logo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: #FF5600;
+  margin-right: 10px;
 }
 
 .header {
-  font-size: 24px;
-  color: #fff;
-  margin-left: 70px; /* Add spacing between the logo and header */
+  font-size: 100px;
+  color: #F5F7F6;
+  font-family: Arial Rounded MT Bold;
+}
+
+.header2 {
+  font-size: 100px;
+  color: #F5F7F6;
+  font-family: Arial Rounded MT Bold;
+}
+
+.header3 {
+  font-size: 100px;
+  color: #F5F7F6;
+  font-family: Arial Rounded MT Bold;
+}
+
+.button-container {
+  position: absolute;
+  left: 200px; /* Adjust the left position */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 /* Style the buttons */
 .entry-button {
-  background: linear-gradient(to bottom, #ff6600, #ff9900);
-  color: #fff;
-  padding: 10px 20px;
+  background: linear-gradient(to bottom, #FF5600, #ff9900);
+  color: #F5F7F6;
+  padding: 10px 50px;
+  height: 100px;
+  width: 200px;
   border: none;
   cursor: pointer;
-  margin: 10px;
-  border-radius: 5px; /* Add rounded corners */
+  margin: 20px;
+  border-radius: 100px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 30px;
+  font-family: Arial Bold;
 }
 
 /* Hover effect for buttons */
 .entry-button:hover {
-  background: linear-gradient(to bottom, #ff9900, #ff6600);
+  background: linear-gradient(to bottom, #ff9900, #FF5600);
   transition: background 0.3s ease;
+}
+
+.parag-text-container {
+  display: flex;
+  flex-direction: column; /* Adjust to display content vertically */
+  align-items: flex-end; /* Align content to the right side */
+  position: absolute;
+  left: 900px;
+  bottom: 50px; /* Adjust to position the container at the bottom right */
+  max-width: 750px;
+}
+
+.paragraph {
+  font-size: 50px;
+  color: #F5F7F6;
+  font-family: Arial Bold;
+  margin-bottom: 10px; /* Add spacing between paragraph and author */
+}
+
+.author {
+  font-size: 60px;
+  color: #0F4C81;
+  font-family: Arial Bold;
 }
