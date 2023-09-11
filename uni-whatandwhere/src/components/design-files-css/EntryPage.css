@@ -1,5 +1,6 @@
 .entry-page {
   background-color: #101820;
+  background-image: url('/mainbackground.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -15,13 +16,13 @@
   display: flex;
   align-items: center;
   position: absolute;
-  top: 50px;
-  left: 50px;
+  top: 40px;
+  left: 40px;
 }
 
 .logo {
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   background-color: #FF5600;
   margin-right: 10px;
@@ -31,6 +32,7 @@
   font-size: 100px;
   color: #F5F7F6;
   font-family: Arial Rounded MT Bold;
+  margin-left: 20px;
 }
 
 .header2 {
@@ -47,7 +49,8 @@
 
 .button-container {
   position: absolute;
-  left: 200px; /* Adjust the left position */
+  left: 150px;
+  top: 530px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -55,7 +58,7 @@
 
 /* Style the buttons */
 .entry-button {
-  background: linear-gradient(to bottom, #FF5600, #ff9900);
+  background: linear-gradient(180deg, rgba(255,86,0,1) 40%, rgba(196,170,138,1) 100%);
   color: #F5F7F6;
   padding: 10px 50px;
   height: 100px;
@@ -67,14 +70,24 @@
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 30px;
-  font-family: Arial Bold;
+  font-size: 50px;
+  font-family: Arial Rounded MT Bold;
+  font-style: italic;
+  line-height: 100px;
+  box-shadow: 0 4px 8px 0 #101820, 0 3px 10px 0 #101820;
 }
 
 /* Hover effect for buttons */
 .entry-button:hover {
-  background: linear-gradient(to bottom, #ff9900, #FF5600);
+  background: linear-gradient(180deg, rgba(196,170,138,1) 0%, rgba(255,86,0,1) 60%);
+  box-shadow: 0 8px 16px 0 rgba(255,86,0,1), 0 6px 20px 0 rgba(196,170,138,1);
   transition: background 0.3s ease;
+}
+
+.entry-button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 
 .parag-text-container {
@@ -82,9 +95,9 @@
   flex-direction: column; /* Adjust to display content vertically */
   align-items: flex-end; /* Align content to the right side */
   position: absolute;
-  left: 900px;
-  bottom: 50px; /* Adjust to position the container at the bottom right */
-  max-width: 750px;
+  left: 1160px;
+  bottom: 90px; /* Adjust to position the container at the bottom right */
+  max-width: 500px;
 }
 
 .paragraph {

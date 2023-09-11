@@ -18,7 +18,7 @@ const Entry = () => {
       </div>
       <div className="parag-text-container">
         <div className="paragraph">"Not getting invited is just a friendly reminder that you need to start planning your own events."</div>
-        <div className="author">- Founder</div>
+        <div className="author">-Founder</div>
       </div>
     </div>
   );
