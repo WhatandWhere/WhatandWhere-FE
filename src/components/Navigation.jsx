@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../components/design-files-css/NavPage.css';
+import './design-files-css/NavPage.css';
 import logo from '../imgs/logologofmkssmnksnfk.png';
 
 const Navigation = () => {
