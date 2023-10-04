@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import img from '../imgs/login.jpeg';
 
 const Login = () => {
   const [email, setEmail] = useState('');

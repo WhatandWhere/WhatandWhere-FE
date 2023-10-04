@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import img from '../imgs/signup.jpeg';
 
 const Signup = () => {
   const [name, setName] = useState('');
