@@ -9,7 +9,7 @@
 
 .entry-page {
   background-color: #101820;
-  background-image: url('./mainbackground.png');
+  background-image: url('/mainbackground.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
