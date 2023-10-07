@@ -14,6 +14,7 @@ const Entry = () => {
         <div className="entry-buttons">
           <Link to="/login" className="entry-button">Login</Link>
           <Link to="/signup" className="entry-button">Signup</Link>
+          <Link to="/signup" className="entry-button">MainPage</Link>
         </div>
       </div>
       <div className="parag-text-container">
