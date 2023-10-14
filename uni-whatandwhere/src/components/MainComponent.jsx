@@ -1,4 +1,5 @@
 import React from 'react';
+import EventListMainPage from "./EventListMainPage";
 
 const MainComponent = () => {
     return (
@@ -20,7 +21,7 @@ const MainComponent = () => {
   
         {/* List Section */}
         <div className="list-section">
-          {/* Your list content goes here */}
+          <EventListMainPage />
         </div>
       </div>
     );
