@@ -5,7 +5,6 @@ import '../components/design-files-css/MainPage.css';
 const MainPage = () => {
   return (
     <div>
-      <h1>Main Page</h1>
       <MainComponent />
     </div>
   );

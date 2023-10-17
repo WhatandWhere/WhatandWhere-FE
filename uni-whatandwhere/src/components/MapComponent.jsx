@@ -1,24 +1,25 @@
 import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer } from 'react-leaflet';
+import '../components/design-files-css/Map.css';
+import 'leaflet/dist/leaflet.css';
 
-class MapComponent {
-  render() {
-    const position = [51.505, -0.09]; // Initial coordinates for the map
+const MapComponent = () => {
+  const mapCenter = [51.10978812505445, 17.03095731439865];
+  const zoomLevel = 14;
 
-    return (
-      <Map center={position} zoom={13} style={{ width: '100%', height: '400px' }}>
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        />
-        <Marker position={position}>
-          <Popup>
-            A sample popup with some information.
-          </Popup>
-        </Marker>
-      </Map>
-    );
-  }
-}
+  return (
+    <MapContainer
+      center={mapCenter}
+      zoom={zoomLevel}
+      className="MapContainer"
+    >
+      <TileLayer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        maxZoom={19}
+        attribution="Atahan Karagoz"
+      />
+    </MapContainer>
+  );
+};
 
 export default MapComponent;
