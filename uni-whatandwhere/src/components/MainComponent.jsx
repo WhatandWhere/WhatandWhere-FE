@@ -1,4 +1,5 @@
 import React from 'react';
+import MapComponent from '../components/MapComponent.jsx';
 
 const MainComponent = () => {
     return (
@@ -11,6 +12,7 @@ const MainComponent = () => {
         {/* Map Section */}
         <div className="map-section">
           {/* Your map content goes here */}
+          <MapComponent />
         </div>
   
         {/* Filters Section */}
