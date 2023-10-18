@@ -1,12 +1,24 @@
 import React from 'react';
+import './design-files-css/MainPageList.css';
 
-const EventItem = ({ event }) => {
+const EventItem = ({event}) => {
+    const handleClick = () => {
+        // add here onClick handler to redirect to the event info
+    };
+
+    // const displayDescription =
+    //     event.description.length > 46
+    //         ? `${event.description.slice(0, 46)}...`
+    //         : event.description;
     return (
-        <div className="event-item">
-            <img src={event.image} alt={event.name} />
-            <h3 className="event-name">{event.name}</h3>
-            <p className="event-description">{event.description}</p>
-            <button className="apply-button">Apply</button>
+        <div className="event-item" onClick={handleClick}>
+            <div className="event-item-content">
+                <img className="event-image" src={event.image} alt={event.name}/>
+                <h3 className="event-name">{event.name}</h3>
+                <p className="event-description">
+                    {event.description}
+                </p>
+            </div>
         </div>
     );
 };
@@ -15,30 +27,86 @@ const EventList = () => {
     const events = [
         {
             id: 1,
-            name: 'Event 1',
+            name: 'Book reading in library for the students',
             description: 'Description for Event 1',
-            image: '../imgs/testEvent.jpg',
+            image: '/testEvent.jpg',
         },
         {
             id: 2,
             name: 'Event 2',
-            description: 'Description for Event 2',
-            image: '../imgs/testEvent.jpg',
+            description: 'Description for Evensaddddddddddddddddddddddddasdasidhasdhahdqwdqwdoqiwjdoqiwjeoijiuewhfiuwqhriuwqradasdsadasdfdsafsafdasdfasfd',
+            image: '/testEvent.jpg',
         },
         {
             id: 3,
             name: 'Event 3',
             description: 'Description for Event 3',
-            image: '../imgs/testEvent.jpg',
+            image: '/testEvent.jpg',
+        },
+        {
+            id: 4,
+            name: 'Event 1',
+            description: 'Description for Event 1',
+            image: '/testEvent.jpg',
+        },
+        {
+            id: 5,
+            name: 'Event 2',
+            description: 'Description for Evensaddddddddddddddddddddddddasdasidhasdhahdqwdqwdoqiwjdoqiwjeoijiuewhfiuwqhriuwqradasdsadasdfdsafsafdasdfasfd',
+            image: '/testEvent.jpg',
+        },
+        {
+            id: 6,
+            name: 'Event 3',
+            description: 'Description for Event 3',
+            image: '/testEvent.jpg',
+        },
+        {
+            id: 7,
+            name: 'Event 1',
+            description: 'Description for Event 1',
+            image: '/testEvent.jpg',
+        },
+        {
+            id: 8,
+            name: 'Event 2',
+            description: 'Description for Evensaddddddddddddddddddddddddasdasidhasdhahdqwdqwdoqiwjdoqiwjeoijiuewhfiuwqhriuwqradasdsadasdfdsafsafdasdfasfd',
+            image: '/testEvent.jpg',
+        },
+        {
+            id: 9,
+            name: 'Event 3',
+            description: 'Description for Event 3',
+            image: '/testEvent.jpg',
+        },
+        {
+            id: 10,
+            name: 'Event 1',
+            description: 'Description for Event 1',
+            image: '/testEvent.jpg',
+        },
+        {
+            id: 11,
+            name: 'Event 2',
+            description: 'Description for Evensaddddddddddddddddddddddddasdasidhasdhahdqwdqwdoqiwjdoqiwjeoijiuewhfiuwqhriuwqradasdsadasdfdsafsafdasdfasfd',
+            image: '/testEvent.jpg',
+        },
+        {
+            id: 12,
+            name: 'Event 3',
+            description: 'Description for Event 3',
+            image: '/testEvent.jpg',
         },
 
     ];
 
     return (
-        <div className="event-list">
-            {events.map((event) => (
-                <EventItem key={event.id} event={event} />
-            ))}
+        <div className="event-list-container">
+            <div className="event-list">
+                {events.map((event) => (
+                    <EventItem key={event.id} event={event}/>
+                ))}
+            </div>
         </div>
     );
 };
