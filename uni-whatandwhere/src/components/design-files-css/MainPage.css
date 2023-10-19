@@ -4,6 +4,16 @@
     flex-wrap: wrap;
 }
 
+/* TopBar Section (100% width) */
+.main-page-all .top-bar {
+    width: 100%; /* Take full width */
+    background-color: #ff9500;
+    box-sizing: border-box; /* Include padding and border in width */
+    display: flex;
+    align-items: center;
+}
+
+
 /* Filter Section (1/3 width) */
 .main-page-all .filter-section {
     flex: 1; /* Take 1/3 of available width */
@@ -23,12 +33,9 @@
     overflow: hidden; /* Hide overflowing content */
 }
 
-
-/* List Section (100% width) */
 .main-page-all .list-section {
-    width: 100%; /* Take full width */
+    width: 100%;
     background-color: #ff0000;
     border: 0.125em solid #ddd;
-    box-sizing: border-box; /* Include padding and border in width */
-
+    box-sizing: border-box;
 }
