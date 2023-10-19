@@ -1,5 +1,6 @@
 import React from 'react';
 import MapComponent from '../components/MapComponent.jsx';
+import TopBarComponent from '../components/TopBarComponent.jsx';
 
 const MainComponent = () => {
   return (
@@ -7,6 +8,7 @@ const MainComponent = () => {
       {/* Top Bar Section */}
       <div className="top-bar">
         {/* Your top bar content goes here */}
+        <TopBarComponent />
       </div>
 
       {/* Filters Section */}
