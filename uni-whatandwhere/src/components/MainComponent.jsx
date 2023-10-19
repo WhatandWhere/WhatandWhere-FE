@@ -1,5 +1,7 @@
 import React from 'react';
 import EventListMainPage from "./EventListMainPage";
+import MapComponent from '../components/MapComponent.jsx';
+import TopBarComponent from '../components/TopBarComponent.jsx';
 
 const MainComponent = () => {
     return (
@@ -7,6 +9,7 @@ const MainComponent = () => {
             {/* Top Bar Section */}
             <div className="top-bar">
                 {/* Your top bar content goes here */}
+                <TopBarComponent/>
             </div>
 
             {/* Filters Section */}
@@ -16,7 +19,7 @@ const MainComponent = () => {
 
             {/* Map Section */}
             <div className="map-section">
-                {/* Your map content goes here */}
+                <MapComponent/>
             </div>
 
             {/* List Section */}
