@@ -8,16 +8,17 @@
 */
 
 .entry-page {
-    background-color: #101820;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center center;
-    height: 100vh; /* Make the background cover the whole screen height */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+
+  background-color: #101820;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  height: 100vh; /* Make the background cover the whole screen height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .logo-header-container {

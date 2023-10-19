@@ -33,6 +33,7 @@
     overflow: hidden; /* Hide overflowing content */
 }
 
+/* List Section (100% width) */
 .main-page-all .list-section {
     width: 100%;
     background-color: #ff0000;
