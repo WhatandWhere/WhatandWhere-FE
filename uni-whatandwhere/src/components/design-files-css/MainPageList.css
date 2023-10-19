@@ -2,10 +2,10 @@
     bottom: 0;
     width: 100%;
     background: transparent; /* Remove gradient background from the page */
-    overflow: auto; /* Allow scrolling */
+    overflow-x: auto; /* Allow scrolling */
     scrollbar-width: thin;
     white-space: nowrap;
-    text-align: center;
+    text-align: left;
 }
 
 .event-list-container::-webkit-scrollbar {
@@ -16,49 +16,41 @@
     background: transparent; /* Make the scrollbar track transparent */
 }
 
-.event-list-container .event-description {
-    white-space: nowrap; /* Prevent text from wrapping */
-    overflow: hidden; /* Hide overflowing text */
-    text-overflow: ellipsis; /* Add ellipsis (...) for overflow */
-    max-width: 200px; /* Set the maximum width for the description */
-}
-
+.event-list-container .event-description,
 .event-list-container .event-name {
     white-space: nowrap; /* Prevent text from wrapping */
     overflow: hidden; /* Hide overflowing text */
     text-overflow: ellipsis; /* Add ellipsis (...) for overflow */
-    max-width: 200px; /* Set the maximum width for the description */
+    max-width: 100%; /* Set the maximum width for the description and name */
+    font-size: 1rem; /* Adjust font size as needed */
 }
 
 .event-list-container .event-list {
     display: inline-block;
-}
-
-.event-list-container .event-item {
-    display: inline-block;
-}
-
-.event-list-container .event-image {
-    max-width: 200px; /* Adjust the image size as needed */
-    max-height: 150px;
-    border-radius: 10px;
+    max-width: 100%;
 }
 
 .event-list-container .event-item {
     display: inline-block;
     background: #BBBCBC;
     border-radius: 10px;
-    margin: 10px;
+    margin: 1rem; /* Adjust margin for spacing */
     cursor: pointer;
     transition: transform 0.2s;
+    width: 3%; /* Set the width as a percentage */
+    min-width: 200px; /* Minimum width for each item */
+}
+
+.event-list-container .event-image {
+    max-width: 100%; /* Adjust the image size as needed */
+    max-height: 150px;
+    border-radius: 10px;
 }
 
 .event-list-container .event-item:hover {
-    transform: scale(1.05); /* Apply a scale transform on hover */
+    transform: scale(1.05);
 }
 
 .event-list-container .event-item-content {
-    padding: 10px; /* Adjust the padding as needed */
+    padding: 1rem;
 }
-
-
