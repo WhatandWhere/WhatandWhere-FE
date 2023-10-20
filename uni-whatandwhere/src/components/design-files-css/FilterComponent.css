@@ -1,0 +1,54 @@
+/* / Filters Section / */
+.filters-section {
+    /* background-color: #eee; */
+    padding: 15px;
+    /* border: 1px solid #ddd; */
+  
+    /* / Add a 1px solid border / */
+  }
+  
+  .filters-section form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .filters-section input {
+    color: #fff;
+    padding: 5px;
+    width: 350px;
+    height: 30px;
+    margin-bottom: 10px;
+    background-color: #0f4c81;
+    border-radius: 100px;
+    border: none;
+  }
+  
+  .filters-section input::placeholder {
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+  }
+  
+  .add-filters-btn {
+    margin-top: 25px;
+    width: 350px;
+    height: 30px;
+    margin-bottom: 10px;
+  }
+  
+  .filter-btn {
+    background-color: #0f4c81;
+    color: #fff;
+    border-radius: 100px;
+    border: none;
+  }
+  
+  .filter-btn--mode {
+    width: 160px;
+    height: 40px;
+  }
+  
+  .util-flex-container {
+    display: flex;
+    justify-content: space-between;
+  }

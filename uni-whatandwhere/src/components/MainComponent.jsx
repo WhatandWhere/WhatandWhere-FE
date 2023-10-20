@@ -2,7 +2,7 @@ import React from 'react';
 import EventListMainPage from "./EventListMainPage";
 import MapComponent from '../components/MapComponent.jsx';
 import TopBarComponent from '../components/TopBarComponent.jsx';
-
+import FilterComponent from '../components/FilterComponent.jsx';
 const MainComponent = () => {
     return (
         <div className="main-page-all">
@@ -15,6 +15,7 @@ const MainComponent = () => {
             {/* Filters Section */}
             <div className="filter-section">
                 {/* Your filters content goes here */}
+                <FilterComponent/>
             </div>
 
             {/* Map Section */}
