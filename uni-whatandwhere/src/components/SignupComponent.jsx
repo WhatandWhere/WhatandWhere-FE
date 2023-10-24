@@ -1,6 +1,5 @@
 // ExtendedLoginPage.jsx
 import React from 'react';
-import Header from '../components/Header';
 import DynamicForm from '../components/DynamicForm';
 
 const signupFields = [
@@ -9,7 +8,11 @@ const signupFields = [
     {name: 'username', type: 'text', label: 'Username', placeholder: 'Username'},
     {name: 'mail', type: 'email', label: 'Mail', placeholder: 'Email'},
     {name: 'phone', type: 'tel', label: 'Phone number', placeholder: 'Phone'},
-    {name: 'dob', type: 'date', label: 'Date of Birth', placeholder: 'Date of Birth'},
+    {
+        name: 'dob',
+        type: 'date',
+        label: 'Date of Birth'
+    },
 ];
 
 function SignupComponent() {
