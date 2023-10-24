@@ -1,16 +1,15 @@
-/*  COLORS
-#FF5600
-#0F4C81
-#F5F7F6
-#BBBCBC
-#888B8B
-#101820
-*/
-
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+.signup-form-container {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('../../imgs/signup.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .form-container {
@@ -20,14 +19,6 @@ body {
     gap: 17px;
 
     height: 100vh;
-}
-
-.signup-form-container {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('../../imgs/signup.jpeg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 }
 
 .login-form-container {
@@ -43,14 +34,6 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: space-between;
-}
-
-.form-img {
-    /* max-width: 100%; */
-    width: 100%;
-    height: calc(95vh - 56px);
-    display: block;
-    /* padding-left: -10px; */
 }
 
 .form-input {
@@ -71,6 +54,14 @@ body {
     );
 }
 
+.form-img {
+    /* max-width: 100%; */
+    width: 100%;
+    height: calc(95vh - 56px);
+    display: block;
+    /* padding-left: -10px; */
+}
+
 .form-input:last-child {
     margin-bottom: 20px;
 }
@@ -79,17 +70,4 @@ body {
     color: #f5f7f6;
     text-align: center;
     font-size: 24px;
-}
-
-
-.checkbox-label {
-    color: white;
-    margin-left: 15px;
-    font-family: Arial Rounded MT;
-    font-size: 25px;
-}
-
-.checkbox-signup {
-    height: 20px;
-    width: 30px;
 }

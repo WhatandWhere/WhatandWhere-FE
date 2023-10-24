@@ -1,12 +1,14 @@
 import React from 'react';
 import Login from '../components/Login.jsx';
-import HomeButton from '../components/HomeButton.jsx';
+import Header from '../components/Header.jsx';
+import LoginRegisterButton from '../components/LoginRegisterButton';
+import LoginComponent from "../components/LoginComponent";
 
 function LoginPage() {
     return (
         <div>
-            <HomeButton/>
-            <Login/>
+            <Header/>
+            <LoginComponent/>
         </div>
     );
 }
