@@ -1,14 +1,14 @@
 import React from 'react';
 import Login from '../components/Login.jsx';
-import Navigation from '../components/Navigation.jsx';
+import HomeButton from '../components/HomeButton.jsx';
 
 function LoginPage() {
-  return (
-    <div>
-      <Navigation />
-      <Login />
-    </div>
-  );
+    return (
+        <div>
+            <HomeButton/>
+            <Login/>
+        </div>
+    );
 }
 
 export default LoginPage;
