@@ -1,8 +1,6 @@
-// Import statements
 import React, { useState } from 'react';
-import FormButton from './ui/FormButton'; // Adjust the path as per your project structure
+import FormButton from './ui/FormButton';
 
-// Signup component
 const Signup = () => {
   const [name, setName] = useState('');
   const [surname, setSurname] = useState('');
@@ -16,7 +14,7 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here, you would typically send a request to your server to create a new user
+    // Here, you would typicall<img src="../imgs/event.jpeg" alt="Some dummmy img" />y send a request to your server to create a new user
     // and handle the response accordingly.
 
     // For simplicity, we'll just display an error message here.
@@ -26,10 +24,73 @@ const Signup = () => {
   return (
     <div className="signup-page1">
       <div className="form-container signup-form-container">
+        {/* <h2>Sign Up</h2> */}
         {error && <p className="error-message">{error}</p>}
         <form onSubmit={handleSubmit}>
-          {/* Your existing input elements */}
-          {/* Replace the existing button with the FormButton component */}
+          <div className="form-group">
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+              placeholder="Name"
+              className="form-input"
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              value={surname}
+              onChange={(e) => setSurname(e.target.value)}
+              required
+              placeholder="Surname"
+              className="form-input"
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+              placeholder="Username"
+              className="form-input"
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              placeholder="Mail"
+              className="form-input"
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="password"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              required
+              placeholder="Password"
+              className="form-input"
+            />
+          </div>
+          <div className="form-group-checkbox">
+            <input
+              type="checkbox"
+              id="age-check"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+              className="checkbox-signup"
+            />
+            <label className="checkbox-label" for="age-check">
+              I'm over 18
+            </label>
+          </div>
+
           <FormButton>Sign Up</FormButton>
         </form>
       </div>

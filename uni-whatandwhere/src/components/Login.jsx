@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import FormButton from './ui/FormButton.jsx';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -13,11 +13,7 @@ const Login = () => {
 
   return (
     <div>
-      {/* <div className="image-container">
-        <img className="signup-img" src={img} alt="Some dummmy img" />
-      </div> */}
       <div className="form-container login-form-container">
-        {/* <h2>Login</h2> */}
         {error && <p className="error-message">{error}</p>}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
@@ -40,9 +36,9 @@ const Login = () => {
               placeholder="Password"
             />
           </div>
-          <button type="submit" className="form-button">
+          <FormButton type="submit" className="form-button">
             Login
-          </button>
+          </FormButton>
         </form>
       </div>
     </div>

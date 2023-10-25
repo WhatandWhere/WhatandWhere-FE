@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import '../components/design-files-css/FilterComponent.css';
+import DoubleSlider from './ui/DoubleSlider';
 
 const FilterComponent = () => {
-  const [feeRange, setFeeRange] = useState(100);
   const [dateRange, setDateRange] = useState({
     startDate: '',
     endDate: '',
@@ -15,8 +15,12 @@ const FilterComponent = () => {
       [name]: value,
     });
   };
-  function handleFeeChange(event) {
-    setFeeRange(event.target.value);
+   // method to get min and max fee from Double Slider MUI component
+   function getRangesFromSliders(values) {
+    return {
+      minFee: values[0],
+      maxFee: values[1],
+    };
   }
   return (
     <div className="filters-section">
@@ -35,17 +39,8 @@ const FilterComponent = () => {
           onChange={handleDateChange}
         />
       </div>
-      <div>
-        <input
-          type="range"
-          min="0"
-          max="1000"
-          value={feeRange}
-          onChange={handleFeeChange}
-        />
-        <div className="fee-range">
-          <span>Fee range: ${feeRange}</span>
-        </div>
+      <div className='slider'>
+        <DoubleSlider getRangesFromSliders={getRangesFromSliders}></DoubleSlider>
       </div>
       <div>
         <input type="text" placeholder="Attendee planned" />
