@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './design-files-css/NavPage.css';
-import logo from '../imgs/logologofmkssmnksnfk.png';
+import '../components/design-files-css/NavPage.css';
+// import logo from '../../public/imgs/logo.png';
 
 const Navigation = () => {
   return (
     <nav className="nav-header">
       <div className="logo-container">
-        <img className="nav-logo" src={logo}></img>
+        <img className="nav-logo" src={'/truelogo.png'}></img>
         <span className="logo-text">Whatandwhere</span>
       </div>
 
