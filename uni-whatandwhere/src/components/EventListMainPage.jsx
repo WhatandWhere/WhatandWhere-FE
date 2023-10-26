@@ -42,6 +42,7 @@ const EventList = () => {
             name: 'Event 3',
             description: 'Description for Event 3',
             image: '/testEvent.jpg',
+            tags: ['Music', 'Sport', 'Bassdasad', 'sadaasd']
         },
         {
             id: 4,
