@@ -26,8 +26,11 @@
 }
 
 .event-list-container .event-list {
-    display: inline-block;
     max-width: 100%;
+    display: flex;
+    flex-wrap: nowrap; /* prevent wrapping, items will be in one line */
+    justify-content: flex-start; /* align items to the start of container */
+    align-items: center;
 }
 
 .event-list-container .event-item {
@@ -37,13 +40,14 @@
     margin: 1rem; /* Adjust margin for spacing */
     cursor: pointer;
     transition: transform 0.2s;
-    width: 3%; /* Set the width as a percentage */
-    min-width: 200px; /* Minimum width for each item */
+    width: 10%; /* You might need to adjust this based on the number of items and desired appearance */
+    min-width: 15rem; /* 250px assumed base size of 16px */
+    height: 15rem;
 }
 
 .event-list-container .event-image {
     max-width: 100%; /* Adjust the image size as needed */
-    max-height: 150px;
+    max-height: 15rem;
     border-radius: 10px;
 }
 
@@ -53,4 +57,18 @@
 
 .event-list-container .event-item-content {
     padding: 1rem;
+}
+
+.event-tags {
+    display: flex;
+    gap: 0.5rem; /* Space between tags */
+    padding-top: 0.5rem; /* Space above the tags */
+}
+
+.event-tag {
+    background: white;
+    padding: 0.25rem 0.5rem; /* Adjust as necessary */
+    border-radius: 5px; /* Adjust as necessary */
+    font-size: 0.85rem; /* Smaller than the description font */
+    white-space: nowrap;
 }
