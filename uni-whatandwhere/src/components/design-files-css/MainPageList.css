@@ -16,13 +16,20 @@
     background: transparent; /* Make the scrollbar track transparent */
 }
 
-.event-list-container .event-description,
 .event-list-container .event-name {
     white-space: nowrap; /* Prevent text from wrapping */
     overflow: hidden; /* Hide overflowing text */
     text-overflow: ellipsis; /* Add ellipsis (...) for overflow */
     max-width: 100%; /* Set the maximum width for the description and name */
-    font-size: 1rem; /* Adjust font size as needed */
+    font-size: 1.15rem; /* Adjust font size as needed */
+}
+
+.event-list-container .event-description {
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Add ellipsis (...) for overflow */
+    max-width: 100%;
+    font-size: 1rem;
 }
 
 .event-list-container .event-list {
@@ -37,11 +44,11 @@
     display: inline-block;
     background: #BBBCBC;
     border-radius: 10px;
-    margin: 1rem; /* Adjust margin for spacing */
+    margin: 0.7rem; /* Adjust margin for spacing */
     cursor: pointer;
     transition: transform 0.2s;
-    width: 10%; /* You might need to adjust this based on the number of items and desired appearance */
-    min-width: 15rem; /* 250px assumed base size of 16px */
+    width: 10%;
+    min-width: 15rem;
     height: 15rem;
 }
 
@@ -56,14 +63,14 @@
 }
 
 .event-list-container .event-item-content {
-    padding: 1rem;
+    padding: 0.7rem;
 }
 
 .event-tags {
     display: flex;
     gap: 0.5rem; /* Space between tags */
     padding-top: 0.5rem; /* Space above the tags */
-    overflow-x: hidden; /* Hide overflowing tags */
+    overflow-x: clip; /* Hide overflowing tags */
     white-space: nowrap; /* Prevent tags from wrapping */
     flex-wrap: nowrap; /* Hide overflowing tags */
 }

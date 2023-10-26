@@ -7,6 +7,8 @@ const EventItem = ({event}) => {
     const handleClick = () => {
         // add here onClick handler to redirect to the event info
     };
+
+
     return (
         <div className="event-item" onClick={handleClick}>
             <div className="event-item-content">
@@ -42,7 +44,7 @@ const EventList = () => {
             name: 'Event 3',
             description: 'Description for Event 3',
             image: '/testEvent.jpg',
-            tags: ['Music', 'Sport', 'Bassdasad', 'sadaasd']
+            tags: ['Music', 'Sport', 'Bassdasad', 'Volleyball']
         },
         {
             id: 4,
