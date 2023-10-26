@@ -1,16 +1,17 @@
 .side-menu {
-    position: fixed;
-    top: 0;
-    left: -50%; /* Start off-screen */
-    width: 50%; /* Half of the screen width */
-    height: 100%;
+    position:absolute;
+    width: 20%;
+    top: 11%;
+    left: 0;
+    height: 90%;
     background-color: #333;
     transition: left 0.3s;
-    z-index: 1;
+    z-index: 2;
+    background-color: #0f4c81;
   }
   
   .side-menu.open {
-    left: 0; /* Move to the screen when open */
+    left: 0;
   }
   
   .side-menu ul {
@@ -19,13 +20,13 @@
   }
   
   .side-menu li {
-    color: white;
-    padding: 10px;
-  }
-  
-  .side-menu button {
-    color: white;
-    background-color: #ff5733;
-    border: none;
-    padding: 10px;
+    color: #f5f7f6;
+    padding: 1em;
+    font-family: Arial Rounded MT Bold;
+    font-size: 2em;
+    border: #f5f7f6;
+    border-style: solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
   }

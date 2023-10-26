@@ -1,7 +1,8 @@
 /* Styling the Map Container */
 .MapContainer {
   width: 100%;
-  height: 64vh; /* 50% of the viewport height */
+  height: 64vh;
+  z-index: 1;
 }
 
 /* Styling the Map Popup */
