@@ -1,0 +1,31 @@
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -50%; /* Start off-screen */
+    width: 50%; /* Half of the screen width */
+    height: 100%;
+    background-color: #333;
+    transition: left 0.3s;
+    z-index: 1;
+  }
+  
+  .side-menu.open {
+    left: 0; /* Move to the screen when open */
+  }
+  
+  .side-menu ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .side-menu li {
+    color: white;
+    padding: 10px;
+  }
+  
+  .side-menu button {
+    color: white;
+    background-color: #ff5733;
+    border: none;
+    padding: 10px;
+  }
