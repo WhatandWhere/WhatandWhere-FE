@@ -70,9 +70,6 @@
     display: flex;
     gap: 0.5rem; /* Space between tags */
     padding-top: 0.5rem; /* Space above the tags */
-    overflow-x: clip; /* Hide overflowing tags */
-    white-space: nowrap; /* Prevent tags from wrapping */
-    flex-wrap: nowrap; /* Hide overflowing tags */
 }
 
 .event-tag {
@@ -80,7 +77,4 @@
     padding: 0.25rem 0.5rem; /* Adjust as necessary */
     border-radius: 5px; /* Adjust as necessary */
     font-size: 0.65rem; /* Smaller than the description font */
-    flex-shrink: 0;
-    flex-grow: 0;
-    white-space: nowrap;
 }
