@@ -1,12 +1,28 @@
 import React, { useState } from 'react';
 import '../components/design-files-css/FilterComponent.css';
 import DoubleSlider from './ui/DoubleSlider';
+import DropdownSelector from './DropdownSelector';
+import AdditionalFilters from './AdditionalFilters';
+
+const countriesAndCities = {
+  Poland: ['Warsaw', 'Krakow', 'Wroclaw'],
+  USA: ['New York', 'Los Angeles', 'Chicago'],
+};
+
+const eventCategories = ['Music', 'Sports', 'Theater', 'Workshops', 'Conferences', 'Exhibitions'];
+
 
 const FilterComponent = () => {
   const [dateRange, setDateRange] = useState({
     startDate: '',
     endDate: '',
   });
+
+  const [selectedCountry, setSelectedCountry] = useState('');
+  const [selectedCity, setSelectedCity] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [showAdditionalFilters, setShowAdditionalFilters] = useState(false);
+
 
   const handleDateChange = (event) => {
     const { name, value } = event.target;
@@ -15,45 +31,71 @@ const FilterComponent = () => {
       [name]: value,
     });
   };
-   // method to get min and max fee from Double Slider MUI component
-   function getRangesFromSliders(values) {
+
+  function getRangesFromSliders(values) {
     return {
       minFee: values[0],
       maxFee: values[1],
     };
   }
-  return (
-    <div className="filters-section">
-    <form>
-      <div className="filter-date">
-        <input
-          type="date"
-          name="startDate"
-          value={dateRange.startDate}
-          onChange={handleDateChange}
-        />
-        <input
-          type="date"
-          name="endDate"
-          value={dateRange.endDate}
-          onChange={handleDateChange}
-        />
-      </div>
-      <div className='slider'>
-        <DoubleSlider getRangesFromSliders={getRangesFromSliders}></DoubleSlider>
-      </div>
+
+
+  const handleAdditionalFilterChange = (filterData) => {
+      // Handle the additional filter data here
+      // You can set it to a state or directly use it to filter events
+  };
+    return (
+      <div className="filters-section">
+        <form>
+          <div className="filter-date">
+            <label className="date-label">Date From</label> {/* Added label for Date From */}
+            <input
+              type="date"
+              name="startDate"
+              value={dateRange.startDate}
+              onChange={handleDateChange}
+            />
+            <label className="date-label">Date To</label> {/* Date To */}
+            <input
+              type="date"
+              name="endDate"
+              value={dateRange.endDate}
+              onChange={handleDateChange}
+            />
+          </div>
+          <div className='slider'><div>
+  <label className="slider-label">Fee Range</label></div>
+  <DoubleSlider getRangesFromSliders={getRangesFromSliders}></DoubleSlider>
+</div>
+<div className='slider'><div>
+  <label className="slider-label">Attendee Planned</label></div>
+  <DoubleSlider getRangesFromSliders={getRangesFromSliders}></DoubleSlider>
+</div>
+
+      <DropdownSelector 
+        items={Object.keys(countriesAndCities)} 
+        placeholder="Select Country"
+        onSelect={setSelectedCountry}
+      />
+      <DropdownSelector 
+        items={countriesAndCities[selectedCountry] || []} 
+        placeholder="Select City"
+        onSelect={setSelectedCity}
+      />
       <div>
-        <input type="text" placeholder="Attendee planned" />
-      </div>
+          <DropdownSelector 
+            items={eventCategories}
+            placeholder="Select Event Category"
+            onSelect={setSelectedCategory}
+          />
+        </div>
       <div>
-        <input type="text" placeholder="Location range/territory" />
-      </div>
-      <div>
-        <input type="text" placeholder="Event category" />
-      </div>
-      <div>
-        <button className="filter-btn add-filters-btn">
-          Add more filters if needed
+      {showAdditionalFilters && (
+            <AdditionalFilters onFilterChange={handleAdditionalFilterChange} />
+        )}
+
+        <button className="filter-btn add-filters-btn" onClick={() => setShowAdditionalFilters(!showAdditionalFilters)}>
+            Add more filters if needed
         </button>
       </div>
       <div className="util-flex-container">
@@ -68,5 +110,4 @@ const FilterComponent = () => {
   </div>
   );
 };
-
 export default FilterComponent;

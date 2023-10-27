@@ -6,10 +6,84 @@
   /* / Add a 1px solid border / */
 }
 
+.date-label {
+  margin-right: 5px; /* Adjust as needed to reduce space */
+  font-size: 14px;
+  color: #0f4c81;
+}
+
+.filter-date {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2px; /* Reduce the gap between date inputs */
+}
+
+.slider-label {
+  color: #0f4c81;
+  margin-bottom: 2em;  /* Added margin to separate label from the slider */
+  align-items: center;
+}
+.slider {
+  margin-left: 1%;
+  align-items: center;
+  justify-content: center;
+  height: 6em;
+
+}
+/* Add the following */
+.slider > div {
+  margin: 0 auto; /* Center the slider */
+}
+
+.dropdown-selector {
+  position: relative;
+  width: 30em;
+  margin-bottom: 1em;
+}
+
+.dropdown-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #0f4c81;
+  color: #fff;
+  border-radius: 90px;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.dropdown-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  border: 1px solid #0f4c81;
+  border-radius: 5px;
+  background-color: #fff;
+  z-index: 1;
+}
+
+.dropdown-item {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #0f4c81;
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item:hover {
+  background-color: #0f4c81;
+  color: #fff;
+}
+
+
 .filters-section input {
   color: #fff;
   padding: 5px;
-  width: 350px;
+  width: 450px;
   height: 30px;
   margin-bottom: 10px;
   background-color: #0f4c81;
@@ -24,7 +98,7 @@
 
 .filters-section input[type='date'] {
   text-align: center;
-  width: 160px;
+  width: 180px;
 }
 
 .filter-date {
@@ -41,20 +115,20 @@
 
 .add-filters-btn {
   margin-top: 25px;
-  width: 350px;
-  height: 30px;
+  width: 490px;
+  height: 20px;
   margin-bottom: 10px;
 }
 
 .filter-btn {
   background-color: #0f4c81;
   color: #fff;
-  border-radius: 100px;
+  border-radius: 90px;
   border: none;
 }
 
 .filter-btn--mode {
-  width: 160px;
+  width: 220px;
   height: 40px;
 }
 
@@ -63,8 +137,3 @@
   justify-content: space-between;
 }
 
-.slider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
