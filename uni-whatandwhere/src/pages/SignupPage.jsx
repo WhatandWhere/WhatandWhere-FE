@@ -1,17 +1,14 @@
 import React from 'react';
-import Signup from '../components/Signup.jsx';
-import Navigation from '../components/Navigation.jsx';
-
-import '../components/design-files-css/Form.css';
+import Header from '../components/Header.jsx';
+import SignupComponent from "../components/SignupComponent";
 
 function SignupPage() {
-  return (
-    <div>
-      <Navigation />
-
-      <Signup />
-    </div>
-  );
+    return (
+        <div>
+            <Header/>
+            <SignupComponent/>
+        </div>
+    );
 }
 
 export default SignupPage;

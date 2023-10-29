@@ -1,15 +1,14 @@
 import React from 'react';
 import './design-files-css/MainPageList.css';
+import EventTags from '../components/EventTags';
+
 
 const EventItem = ({event}) => {
     const handleClick = () => {
         // add here onClick handler to redirect to the event info
     };
 
-    // const displayDescription =
-    //     event.description.length > 46
-    //         ? `${event.description.slice(0, 46)}...`
-    //         : event.description;
+
     return (
         <div className="event-item" onClick={handleClick}>
             <div className="event-item-content">
@@ -18,6 +17,7 @@ const EventItem = ({event}) => {
                 <p className="event-description">
                     {event.description}
                 </p>
+                <EventTags tags={event.tags}/>
             </div>
         </div>
     );
@@ -30,18 +30,21 @@ const EventList = () => {
             name: 'Book reading in library for the students',
             description: 'Description for Event 1',
             image: '/testEvent.jpg',
+            tags: ['Music', 'Sport', 'Pool']
         },
         {
             id: 2,
             name: 'Event 2',
             description: 'Description for Evensaddddddddddddddddddddddddasdasidhasdhahdqwdqwdoqiwjdoqiwjeoijiuewhfiuwqhriuwqradasdsadasdfdsafsafdasdfasfd',
             image: '/testEvent.jpg',
+            tags: ['Music', 'Sport']
         },
         {
             id: 3,
             name: 'Event 3',
             description: 'Description for Event 3',
             image: '/testEvent.jpg',
+            tags: ['Music', 'Sport', 'Bassdasad', 'Volleyball']
         },
         {
             id: 4,
