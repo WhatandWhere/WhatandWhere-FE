@@ -1,0 +1,22 @@
+.today-filter-container {
+    display: flex;
+    align-items: center; /* Ensures vertical alignment */
+    gap: 0; /* Set the gap to 0 to have no space between items */
+  }
+  
+  .today-filter-text {
+    color: #0f4c81;
+    margin-left: 180px; /* Adjust this value as needed to reduce space */
+  }
+  
+  input[type="checkbox"] {
+    transform: scale(0.50);
+    margin-top: 10px;
+    margin-left: 0; /* Removes any default margin */
+  }
+
+  
+  .slider {
+    margin-left: 2px; /* Adjust this value as needed to reduce space */
+  }
+  

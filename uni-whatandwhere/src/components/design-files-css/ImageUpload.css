@@ -1,0 +1,61 @@
+.drop-zone {
+    /* Set minimum height to accommodate fixed-size images and padding */
+    min-height: 150px; /* Adjust based on your design needs */
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    height: 100%;
+    display: flex; /* Use flexbox layout */
+    flex-direction: column; /* Stack flex items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    display: flex; /* Use flexbox to align children */
+    flex-wrap: wrap; /* Allow items to wrap to next line */
+    min-height: 200px; /* Set a minimum height to accommodate images */
+  }
+  .preview-container {
+    display: flex; /* Use flexbox for inline layout */
+    flex-wrap: nowrap; /* Prevent wrapping to a new line */
+    gap: 10px; /* Space between previews */
+    margin-top: 10px; /* Space from the top of the drop zone */
+  }
+  
+  .image-preview {
+    display: flex; /* Use flexbox for alignment */
+    flex-direction: column; /* Stack image and button vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+  }
+
+  .image-preview img {
+    /* Set a fixed size for all images */
+    width: 100px; /* or any other fixed width */
+    height: 100px; /* or any other fixed height */
+    margin-right: 10px;
+    object-fit: cover; /* This will cover the area without stretching the image */
+  }
+  
+  .drop-zone:hover {
+    border-color: #333;
+  }
+  .upload-button {
+    background-color: #0f4c81; /* Blue background */
+    color: white; /* White text */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding for size */
+    margin: 10px; /* Margin for spacing */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    order: -1;
+  }
+  
+  .upload-button:hover {
+    background-color: #0f4c81; /* Darker blue on hover */
+  }
+  .close-preview {
+    /* ... existing styles ... */
+    margin-top: 5px; /* Space from the image */
+  }
