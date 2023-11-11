@@ -5,7 +5,8 @@
   gap: 40px;
 }
 
-.left-panel, .right-panel {
+.left-panel,
+.right-panel {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -14,9 +15,9 @@
 /* Common input styles */
 .event-input {
   width: 80%;
- margin-left: 5rem;
+  margin-left: 5rem;
   margin-bottom: 15px;
-  border: 1px solid #BBBCBC;
+  border: 1px solid #bbbcbc;
   border-radius: 100px;
   background: linear-gradient(
     90deg,
@@ -32,6 +33,7 @@
   overflow: hidden;
   width: 91%;
 }
+
 /* Styles for the date input wrapper */
 .date-input-wrapper {
   display: flex;
@@ -40,13 +42,13 @@
   width: 82.4%;
 }
 
-
-
-
-
 .event-description {
   height: 150px;
-  background: linear-gradient(90deg, rgb(217, 219, 219) 40%, rgba(187, 188, 188, 1) 100%);
+  background: linear-gradient(
+    90deg,
+    rgb(217, 219, 219) 40%,
+    rgba(187, 188, 188, 1) 100%
+  );
   border-radius: 5px;
   margin-top: 10%;
 }
@@ -73,25 +75,33 @@
   width: 37em;
 }
 
-.filter-btn, .dropdown-button {
+.filter-btn,
+.dropdown-button {
   border-radius: 20px;
+  border: 1px solid #bbbcbc;
+  border-radius: 100px;
   background: linear-gradient(
     90deg,
     rgba(136, 139, 139, 1) 40%,
     rgba(187, 188, 188, 1) 100%
   );
-  width: 36.5rem;
-  margin-left: 5rem;
+  width: 36.6rem;
+  margin-left: 1rem;
+
   text-align: center;
+  height: 2rem;
+  color: #ebeef1;
 }
 .dropdown-item {
+  z-index: 100;
   border-radius: 20px;
   background: linear-gradient(
     90deg,
     rgba(136, 139, 139, 1) 40%,
     rgba(187, 188, 188, 1) 100%
   );
-  width: 35.5rem;
+  width: 37rem;
+  color: #ebeef1;
   height: 2rem;
   margin-left: 5rem;
   text-align: center;
@@ -100,6 +110,10 @@
   background-color: #ffffff;
   width: 0rem;
   height: 0rem;
+  z-index: 100;
+}
+.dropdown-selector {
+  height: 2rem;
 }
 
 @media (max-width: 768px) {
@@ -107,7 +121,8 @@
     flex-direction: column;
   }
 
-  .left-panel, .right-panel {
+  .left-panel,
+  .right-panel {
     width: 100%;
   }
 
@@ -124,7 +139,8 @@
 }
 
 @media (max-width: 100px) {
-  .filter-date, .util-flex-container {
+  .filter-date,
+  .util-flex-container {
     flex-direction: column;
     width: 80%;
     height: 10%;
@@ -138,19 +154,40 @@
 }
 
 /* Ensure all inputs including dropdowns are the same width */
-.event-input,  .filter-btn {
+.event-input,
+.filter-btn {
+  font-size: 1rem;
   width: 80%; /* Standard width */
 }
 
 /* Adjust the height of text inputs to match dropdowns */
-.event-input,  .filter-btn {
+.event-input,
+.filter-btn {
   height: 35px; /* Standard height */
 }
-
-/* Adjust the date input wrapper to match other input widths */
-.date-input-wrapper {
-  width: 41.5rem; /* Match width with other inputs */
+.time-input-wrapper {
+  width: 40.5rem; /* Match width with other inputs */
   height: 5rem;
   margin-left: 0rem;
+  display: flex;
+}
+/* Adjust the date input wrapper to match other input widths */
+.date-input-wrapper {
+  width: 40.5rem; /* Match width with other inputs */
+  height: 5rem;
+  margin-left: 0rem;
+  display: flex;
 }
 
+.dropdown-style {
+  width: 80%;
+  margin-left: 5rem;
+  margin-bottom: 15px;
+  height: 35px; /* Same height as event-input */
+  font-size: 16px; /* Adjust as per your requirement */
+  /* Add other styles as needed to match event-input */
+}
+
+.btn-size {
+  background-color: black;
+}

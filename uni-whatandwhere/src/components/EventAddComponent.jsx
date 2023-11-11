@@ -49,13 +49,11 @@ const EventAddPage = () => {
     'Exhibitions',
   ];
 
-
   // State related to country and city selection
   const [selectedCountry, setSelectedCountry] = useState('');
   const [selectedCity, setSelectedCity] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   // Handlers
-
 
   const handleCountryChange = (selectedCountry) => {
     setSelectedCountry(selectedCountry);
@@ -90,7 +88,7 @@ const EventAddPage = () => {
   };
   const handleDateChange = (event) => {
     const { name, value } = event.target;
-    setDateRange(prevState => ({
+    setDateRange((prevState) => ({
       ...prevState,
       [name]: value,
     }));
@@ -117,7 +115,7 @@ const EventAddPage = () => {
           onChange={handleInputChange}
           className="event-description"
         />
-        <div className='Create-Event-btn'>
+        <div className="Create-Event-btn">
           <FormButton>Create Event</FormButton>
         </div>
       </div>
@@ -131,9 +129,6 @@ const EventAddPage = () => {
           className="event-input"
         />
 
-
-
-
         <input
           type="text"
           name="fee"
@@ -141,11 +136,6 @@ const EventAddPage = () => {
           value={eventDetails.fee}
           onChange={handleInputChange}
           className="event-input"
-        />
-        <DropdownSelector
-          items={eventCategories}
-          placeholder="Select Event Category"
-          onSelect={setSelectedCategory}
         />
         <input
           type="text"
@@ -171,31 +161,45 @@ const EventAddPage = () => {
           onChange={handleInputChange}
           className="event-input"
         />
+
+        <DropdownSelector
+          items={eventCategories}
+          placeholder="Select Event Category"
+          onSelect={setSelectedCategory}
+        />
         <DropdownSelector
           items={Object.keys(countriesAndCities)}
           placeholder="Country"
           onSelect={handleCountryChange}
         />
+
         <DropdownSelector
           items={selectedCountry ? countriesAndCities[selectedCountry] : []}
           placeholder="City"
           onSelect={handleCityChange}
         />
 
-        <div className="time-input-wrapper"> {/* You might need to add this wrapper */}
+        <div className="time-input-wrapper">
+          {/* You might need to add this wrapper */}
+
           <input
             type="time"
             name="startTime"
             value={timeRange.startTime}
-            onChange={(e) => setTimeRange({ ...timeRange, startTime: e.target.value })}
+            onChange={(e) =>
+              setTimeRange({ ...timeRange, startTime: e.target.value })
+            }
             className="event-input"
             max={timeRange.endTime || ''} // Add this line to ensure start time is not after end time
           />
+
           <input
             type="time"
             name="endTime"
             value={timeRange.endTime}
-            onChange={(e) => setTimeRange({ ...timeRange, endTime: e.target.value })}
+            onChange={(e) =>
+              setTimeRange({ ...timeRange, endTime: e.target.value })
+            }
             className="event-input"
             min={timeRange.startTime || ''} // Add this line to ensure end time is not before start time
           />
@@ -226,6 +230,3 @@ const EventAddPage = () => {
 };
 
 export default EventAddPage;
-
-
-
