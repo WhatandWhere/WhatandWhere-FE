@@ -1,14 +1,14 @@
 import React from "react";
-import Entry from "../components/Entry.jsx";
+import Entry from "../components/Entry";
 
 import "../components/design-files-css/entry-page/entry-page.css";
 
-const EntryPage = () => {
-  return (
-    <div className="entry-page">
-      <Entry />
-    </div>
-  );
-};
+function EntryPage() {
+	return (
+		<div className="entry-page">
+			<Entry />
+		</div>
+	);
+}
 
 export default EntryPage;
