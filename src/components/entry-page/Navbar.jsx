@@ -1,14 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-scroll";
 import "../design-files-css/entry-page/Navbar.css";
 import Sidebar from "./SideBar";
 import { signOut } from "../../action/authActions";
-import { AuthContext } from "../../context/context";
+import { useAuth } from "../../context/context";
 
 export default function NavBar() {
 	// const [user, setUser] = useState(localStorage.getItem("auth_token"));
-	const user = useContext(AuthContext);
-	console.log(user);
+	const user = useAuth();
+
 	return (
 		<div>
 			<nav className="navbar">
@@ -35,7 +35,7 @@ export default function NavBar() {
 						>
 							About
 						</Link>
-						{!user ? (
+						{!user.userToken ? (
 							<a href="/signup" className="primary-medium">
 								SIGN UP
 							</a>
@@ -45,6 +45,7 @@ export default function NavBar() {
 								className="primary-medium"
 								onClick={() => {
 									signOut();
+									user.setUserToken(null);
 								}}
 							>
 								SIGN OUT

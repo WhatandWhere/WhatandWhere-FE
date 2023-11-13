@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Navigate } from "react-router";
 import EntryPage from "./pages/EntryPage";
@@ -8,23 +8,12 @@ import MainPage from "./pages/MainPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
 import "./App.css";
 import ProtectedRoute from "./components/utilcomponents/protectedRoute";
-import { AuthContext } from "./context/context";
+// eslint-disable-next-line import/no-named-as-default
+import AuthProvider from "./context/context";
 
 function App() {
-	const [user, setUser] = useState(localStorage.getItem("auth_token"));
-	useEffect(() => {
-		const handleStorageChange = () => {
-			console.log("Storage changed");
-			setUser(localStorage.getItem("auth_token"));
-		};
-		window.addEventListener("storage", handleStorageChange);
-		return () => {
-			window.removeEventListener("storage", handleStorageChange);
-		};
-	}, [user]);
-
 	return (
-		<AuthContext.Provider value={user}>
+		<AuthProvider>
 			<Router>
 				<div className="App">
 					<Routes>
@@ -34,7 +23,7 @@ function App() {
 						<Route
 							path="/mainpage"
 							element={
-								<ProtectedRoute user={user}>
+								<ProtectedRoute>
 									<MainPage />
 								</ProtectedRoute>
 							}
@@ -44,7 +33,7 @@ function App() {
 					</Routes>
 				</div>
 			</Router>
-		</AuthContext.Provider>
+		</AuthProvider>
 	);
 }
 

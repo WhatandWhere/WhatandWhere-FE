@@ -3,6 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import DynamicForm from "./DynamicForm";
 import { signUp, storeUser } from "../action/authActions";
+import { useAuth } from "../context/context";
 
 const signupFields = [
 	{
@@ -39,6 +40,7 @@ const signupFields = [
 
 function SignupComponent() {
 	const navigate = useNavigate();
+	const user = useAuth();
 	const handleSubmit = async (formValues) => {
 		const result = await signUp(
 			formValues.email,
@@ -48,7 +50,8 @@ function SignupComponent() {
 			formValues.surname
 		);
 		storeUser(result.token);
-		navigate("/");
+		user.setUserToken(result.token);
+		navigate("/mainpage");
 	};
 	return (
 		<div className="form-container signup-form-container">
