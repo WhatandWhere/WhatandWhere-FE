@@ -2,6 +2,9 @@
 import React from "react";
 import DynamicForm from "./DynamicForm";
 import "./design-files-css/DynamicForm.css";
+import { signIn, storeUser } from "../action/authActions";
+// eslint-disable-next-line import/order
+import { useNavigate } from "react-router-dom";
 
 const emailPasswordFields = [
 	{
@@ -19,9 +22,16 @@ const emailPasswordFields = [
 ];
 
 function LoginPage() {
+	const navigate = useNavigate();
+	const handleSubmit = async (formValues) => {
+		const result = await signIn(formValues.email, formValues.password);
+		storeUser(result.token);
+		navigate("/");
+		console.log("Login");
+	};
 	return (
 		<div className="form-container login-form-container">
-			<DynamicForm formData={emailPasswordFields} name="Login" />
+			<DynamicForm formData={emailPasswordFields} name="Login" onSubmit={handleSubmit} />
 		</div>
 	);
 }

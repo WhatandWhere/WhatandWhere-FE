@@ -1,6 +1,6 @@
 import React from "react";
 import "../design-files-css/entry-page/AboutUs.css";
-import { Button } from "./Button";
+import "../design-files-css/entry-page/Button.css";
 
 export default function AboutUs() {
 	return (
@@ -16,8 +16,12 @@ export default function AboutUs() {
 					</span>
 				</div>
 				<div className="btns">
-					<Button buttonStyle="primary-large">Login</Button>
-					<Button buttonStyle="primary-large">Sign up</Button>
+					<a href="/login" className="primary-large">
+						Login
+					</a>
+					<a href="/signup" className="primary-large">
+						Sign up
+					</a>
 				</div>
 			</div>
 		</section>

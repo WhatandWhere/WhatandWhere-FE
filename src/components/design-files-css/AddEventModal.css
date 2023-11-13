@@ -11,11 +11,11 @@
     align-items: center;
     z-index: 2;
   }
-  
+
   .modal.open {
     display: flex;
   }
-  
+
   /* Styling the Modal Content */
   .modal-content {
     background: #fff;
@@ -23,13 +23,13 @@
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
-  
+
   /* Additional Styles for Form Elements */
   label {
     display: block;
     margin-top: 10px;
   }
-  
+
   input,
   textarea {
     width: 100%;
@@ -38,9 +38,8 @@
     border: 1px solid #ccc;
     border-radius: 4px;
   }
-  
+
   button {
-    margin-top: 10px;
     padding: 10px 20px;
     background: #007bff;
     color: #fff;
@@ -48,4 +47,3 @@
     border-radius: 4px;
     cursor: pointer;
   }
-  

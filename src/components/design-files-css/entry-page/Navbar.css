@@ -65,6 +65,8 @@
 
 .nav-buttons {
   display: flex;
-  align-content: center;
+  gap: 3rem;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
 }

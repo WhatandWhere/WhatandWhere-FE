@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import LoginRegisterButton from "./LoginRegisterButton";
 import "./design-files-css/DynamicForm.css";
 // eslint-disable-next-line import/order
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-function DynamicForm({ formData, name, showTerms = false }) {
+function DynamicForm({ formData, name, showTerms = false, onSubmit }) {
 	const [formValues, setFormValues] = useState({});
-
+	// const [email, setEmail] = useState("");
+	// const [password, setPassword] = useState("");
+	// const [username, setUsername] = useState("");
+	// const [nameInput, setNameInput] = useState("");
+	// const [surname, setSurname] = useState("");
+	const navigate = useNavigate();
 	const handleInputChange = (e) => {
 		const { name, value } = e.target;
 		setFormValues((prevFormValues) => ({
@@ -39,7 +44,6 @@ function DynamicForm({ formData, name, showTerms = false }) {
 						placeholder={field.placeholder}
 						value={formValues[field.name] || ""}
 						onChange={handleInputChange}
-						{/* eslint-disable-next-line no-return-assign */}
 						onFocus={(e) => (e.target.type = field.onFocus)}
 						onBlur={(e) => (e.target.type = field.onBlur)}
 					/>
@@ -59,7 +63,12 @@ function DynamicForm({ formData, name, showTerms = false }) {
 					</label>
 				</div>
 			)}
-			<LoginRegisterButton label={name} />
+			<LoginRegisterButton
+				label={name}
+				onClick={() => {
+					onSubmit(formValues);
+				}}
+			/>
 		</form>
 	);
 }

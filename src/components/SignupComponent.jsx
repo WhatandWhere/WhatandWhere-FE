@@ -1,7 +1,22 @@
 import React from "react";
+// eslint-disable-next-line import/no-named-as-default,import/no-named-as-default-member
+import { useNavigate } from "react-router-dom";
 import DynamicForm from "./DynamicForm";
+import { signUp, storeUser } from "../action/authActions";
 
 const signupFields = [
+	{
+		name: "email",
+		type: "email",
+		label: "Mail",
+		placeholder: "Email",
+	},
+	{
+		name: "password",
+		type: "password",
+		label: "Password",
+		placeholder: "Password",
+	},
 	{
 		name: "name",
 		type: "text",
@@ -20,38 +35,24 @@ const signupFields = [
 		label: "Username",
 		placeholder: "Username",
 	},
-	{
-		name: "mail",
-		type: "email",
-		label: "Mail",
-		placeholder: "Email",
-	},
-	{
-		name: "password",
-		type: "password",
-		label: "Password",
-		placeholder: "Password",
-	},
-	{
-		name: "phone",
-		type: "tel",
-		label: "Phone number",
-		placeholder: "Phone",
-	},
-	{
-		name: "dob",
-		type: "text",
-		label: "Date of Birth",
-		placeholder: "Birth Date",
-		onFocus: "date",
-		onBlur: "text",
-	},
 ];
 
 function SignupComponent() {
+	const navigate = useNavigate();
+	const handleSubmit = async (formValues) => {
+		const result = await signUp(
+			formValues.email,
+			formValues.password,
+			formValues.username,
+			formValues.name,
+			formValues.surname
+		);
+		storeUser(result.token);
+		navigate("/");
+	};
 	return (
 		<div className="form-container signup-form-container">
-			<DynamicForm formData={signupFields} name="Sign up" showTerms />
+			<DynamicForm formData={signupFields} name="Sign up" showTerms onSubmit={handleSubmit} />
 		</div>
 	);
 }

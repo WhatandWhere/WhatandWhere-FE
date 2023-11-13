@@ -21,6 +21,7 @@
     ],
     "react/prop-types": 0,
     "import/prefer-default-export": 0,
+    "no-return-assign": 0,
     "no-shadow": "warn",
     "react/destructuring-assignment" : "warn",
     "react/no-array-index-key": "warn",

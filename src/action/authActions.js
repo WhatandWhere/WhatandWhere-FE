@@ -1,27 +1,28 @@
 import axios from "axios";
 
+const backendLink = "https://whatandwhere-3df40fb886ec.herokuapp.com";
 export const signUp = async (email, password, username, name, surname) => {
-	const result = await axios.post(`${process.env.BACK_URL}/api/user/signup`, {
+	const result = await axios.post(`${backendLink}/api/user/signup`, {
 		email,
 		password,
 		username,
 		name,
 		surname,
 	});
-	return { token: result.token };
+	console.log(result.data.token);
+	return { token: result.data.token };
 };
 
 export const signIn = async (email, password) => {
-	const result = await axios.post(`${process.env.BACK_URL}/api/user/login`, {
+	const result = await axios.post(`${backendLink}/api/user/login`, {
 		email,
 		password,
 	});
-	return { token: result.token };
+	return { token: result.data.token };
 };
 
 export const signOut = async () => {
-	const result = await axios.post("http://localhost:3001/api/v1/users", {});
-	return result;
+	localStorage.setItem("auth_token", "");
 };
 
 // export const refreshTokens = async () => {
