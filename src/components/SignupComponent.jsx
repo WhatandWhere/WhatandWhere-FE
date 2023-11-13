@@ -39,16 +39,17 @@ const signupFields = [
 
 function SignupComponent() {
 	const navigate = useNavigate();
-	const handleSubmit = async (formValues) => {
-		const result = await signUp(
+	const handleSubmit = (formValues) => {
+		signUp(
 			formValues.email,
 			formValues.password,
 			formValues.username,
 			formValues.name,
 			formValues.surname
-		);
-		storeUser(result.token);
-		navigate("/");
+		).then((res) => {
+			storeUser(res.token);
+			navigate("/mainpage");
+		});
 	};
 	return (
 		<div className="form-container signup-form-container">

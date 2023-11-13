@@ -26,7 +26,7 @@ function LoginPage() {
 	const handleSubmit = async (formValues) => {
 		const result = await signIn(formValues.email, formValues.password);
 		storeUser(result.token);
-		navigate("/");
+		navigate("/mainpage");
 		console.log("Login");
 	};
 	return (
