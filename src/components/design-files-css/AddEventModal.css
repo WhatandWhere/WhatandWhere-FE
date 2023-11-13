@@ -100,7 +100,7 @@ textarea {
 
 .image-preview {
   max-width: 10%;
-  height: 5%;
+  max-height: 5%;
   margin-top: 10px;
 }
 
