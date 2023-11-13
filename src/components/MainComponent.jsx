@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import EventListMainPage from './EventListMainPage';
-import MapComponent from '../components/MapComponent';
-import AddEventModal from '../components/AddEventModal';
-import NavBar from '../components/entry-page/Navbar';
+import React, { useState } from "react";
+import EventListMainPage from "./EventListMainPage";
+import MapComponent from "../components/MapComponent";
+import AddEventModal from "../components/AddEventModal";
+import NavBar from "../components/entry-page/Navbar";
+import FiltersForm from "./FiltersForm/FiltersForm";
 
 const MainComponent = () => {
   const [isEditMode, setIsEditMode] = useState(false);
@@ -46,18 +47,27 @@ const MainComponent = () => {
       </div>
 
       <div className="filter-section">
-        {/* Your filters content goes here */}
+        <FiltersForm />
       </div>
 
       <div className="map-section">
-        <MapComponent onMapClick={handleMapClick} newEventLocation={newEventLocation} />
+        <MapComponent
+          onMapClick={handleMapClick}
+          newEventLocation={newEventLocation}
+        />
       </div>
       <button
-          onClick={toggleEditMode}
-          className={buttonClicked ? (isEditMode ? 'add-edit-event-button-clicked' : 'add-edit-event-button') : 'add-edit-event-button'}
-        >
-          {isEditMode ? 'Disable Edit Mode' : 'Enable Edit Mode'}
-        </button>
+        onClick={toggleEditMode}
+        className={
+          buttonClicked
+            ? isEditMode
+              ? "add-edit-event-button-clicked"
+              : "add-edit-event-button"
+            : "add-edit-event-button"
+        }
+      >
+        {isEditMode ? "Disable Edit Mode" : "Enable Edit Mode"}
+      </button>
 
       <div className="list-section">
         <EventListMainPage />
@@ -74,6 +84,5 @@ const MainComponent = () => {
     </div>
   );
 };
-
 
 export default MainComponent;
