@@ -22,7 +22,7 @@
 
 .modal-content {
   display: flex;
-  background: #fff;
+  background: #f5f7f6;
   border-radius: 8px;
   overflow: hidden;
   max-width: 60vw; /* Adjust the maximum width as needed */
@@ -30,6 +30,9 @@
   width: 100%;
   box-sizing: border-box;
   position: relative;
+  border: 0.5em solid;
+  border-image: linear-gradient(to right, #ff5600, #0f4c81); /* Gradient border */
+  border-image-slice: 1;
 }
 
 .close-button {
@@ -81,7 +84,7 @@ textarea {
 
 textarea {
   resize: vertical;
-  max-height: 18em;
+  max-height: 12em;
 }
 
 .image-preview-container {
@@ -91,12 +94,38 @@ textarea {
 
 .remove-button {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 25%; /* Adjust the distance from the bottom as needed */
+  right: 30%; /* Adjust the distance from the right as needed */
   background: none;
   border: none;
-  color: red;
+  color: #ff5600;
   cursor: pointer;
+  border-radius: 50%;
+  width: 30px; /* Adjust the size as needed */
+  height: 30px; /* Adjust the size as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.remove-button:hover {
+  color: #0f4c81;
+}
+
+.close-button {
+  position: absolute;
+  top: 4%; /* Adjust the distance from the bottom as needed */
+  right: 2%; /* Adjust the distance from the right as needed */
+  background: none;
+  border: none;
+  color: #ff5600;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 30px; /* Adjust the size as needed */
+  height: 30px; /* Adjust the size as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .image-preview {
@@ -106,14 +135,86 @@ textarea {
 }
 
 button {
-  background: #4caf50;
-  color: #fff;
+  background: #0f4c81;
+  color: #f5f7f6;
   padding: 10px;
   border: none;
-  border-radius: 4px;
+  border-radius: 25px;
   cursor: pointer;
 }
 
 button:hover {
-  background: #45a049;
+  background: #ff5600;
+}
+
+.tooltip {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.tooltip label {
+  margin-right: 10px;
+}
+
+.tooltip input[type="range"] {
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 5px;
+  border-radius: 5px;
+  background: linear-gradient(to right, #ff5600, #0f4c81);
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.tooltip input[type="range"]:hover {
+  opacity: 1;
+}
+
+.tooltip input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #f5f7f6;
+  cursor: pointer;
+}
+
+.tooltip input[type="range"]::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #f5f7f6;
+  cursor: pointer;
+}
+
+.tooltip .tooltip-text {
+  visibility: hidden;
+  width: 100px;
+  background-color: #0f4c81;
+  color: #f7f5f6;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+.modal-date-inputs {
+  display: flex;
+  justify-content: space-between;
 }

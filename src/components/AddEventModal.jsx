@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import '../components/design-files-css/AddEventModal.css';
+import Slider from '../components/AddEventModalSlider.jsx';
 
 const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
   const [eventName, setEventName] = useState('');
   const [eventStartDate, setEventStartDate] = useState('');
   const [eventEndDate, setEventEndDate] = useState('');
   const [eventTime, setEventTime] = useState('');
-  const [eventFee, setEventFee] = useState(1); // Default value for event fee
+  const [eventFee, setEventFee] = useState(0); // Default value for event fee
   const [eventCategory, setEventCategory] = useState('');
   const [eventSubcategory, setEventSubcategory] = useState('');
   const [eventPlaceType, setEventPlaceType] = useState('');
   const [eventLocation, setEventLocation] = useState('');
-  const [plannedParticipants, setPlannedParticipants] = useState(1); // Default value for planned participants
+  const [plannedParticipants, setPlannedParticipants] = useState(0); // Default value for planned participants
   const [eventDescription, setEventDescription] = useState('');
   const [eventImages, setEventImages] = useState([]); // Use an array for multiple images
   const [imagePreviews, setImagePreviews] = useState([]); // State to store image previews
@@ -86,8 +87,6 @@ const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
     }
   };
   
-  
-  
   const handleDragOver = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -110,23 +109,97 @@ const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
     }
   }, [location]);
 
-  const handleSave = () => {
-    onSave({
-      name: eventName,
-      startDate: eventStartDate,
-      endDate: eventEndDate,
-      time: eventTime,
-      fee: eventFee,
-      category: eventCategory,
-      subcategory: eventSubcategory,
-      placeType: eventPlaceType,
-      location: eventLocation,
-      plannedParticipants: plannedParticipants,
-      image: eventImages,
-      description: eventDescription,
-    });
+  const [buttonText, setButtonText] = useState('Save Event');
 
+  useEffect(() => {
+    const maxParticipantValue = Math.max(...participantValues);
+    // Update the button text based on the plannedParticipants value
+    if (plannedParticipants >= maxParticipantValue) {
+      setButtonText('Send Request');
+    } else {
+      setButtonText('Save Event');
+    }
+  }, [plannedParticipants]);
+
+  const [warningMessage, setWarningMessage] = useState('');
+
+  const handleSave = () => {
+    // Validate required fields
+    if (!eventName || !eventStartDate || !eventEndDate || !eventPlaceType) {
+      setWarningMessage('Please fill in all required fields.');
+      return;
+    }
+  
+    // Check if the plannedParticipants slider is at its maximum value
+    if (plannedParticipants >= Math.max(...participantValues)) {
+      // Send a request to the territory manager
+      sendRequestToTerritoryManager();
+      // Optionally, you can also show a confirmation message or perform additional actions
+      // Reset warning message after handling the request
+      setWarningMessage('');
+    } else {
+      // Prepare the event data
+      const eventData = {
+        name: eventName,
+        startDate: eventStartDate,
+        endDate: eventEndDate,
+        time: eventTime,
+        fee: eventFee,
+        category: eventCategory,
+        subcategory: eventSubcategory,
+        placeType: eventPlaceType,
+        location: eventLocation,
+        plannedParticipants: plannedParticipants,
+        image: eventImages,
+        description: eventDescription,
+      };
+  
+      // Call the onSave function with the event data
+      onSave(eventData);
+  
+      // Reset warning message after successful save
+      setWarningMessage('');
+    }
+  
+    // Close the modal
     onClose();
+  };
+  
+  const sendRequestToTerritoryManager = () => {
+    // Implement the logic to send a request to the territory manager here
+    // For example, you can make an API call or perform any necessary actions
+    // You may also show a confirmation message to the user
+    alert("Request sent to the territory manager");
+    // Optionally, perform additional actions or UI updates
+  };
+
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [subcategories, setSubcategories] = useState([]);
+  const [selectedSubcategory, setSelectedSubcategory] = useState('');
+
+  // Data structure for categories and subcategories
+  const categoryData = {
+    music: ['pop', 'rock', 'hip-hop'],
+    sports: ['basketball', 'soccer', 'tennis'],
+    // Add more categories and subcategories as needed
+  };
+
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    setSubcategories(categoryData[category] || []);
+  };
+
+  // Slider values
+  const eventFeeValues = ['Free', 5, 10, 20, 50, 100, 200, 300, 400, '500+'];
+  const participantValues = [1, 5, 10, 20, 50, 100];
+
+  const today = new Date().toISOString().split('T')[0];
+  const isEndDateDisabled = !eventStartDate;
+
+  const placeTypes = ['Indoor', 'Outdoor'];
+
+  const handlePlaceTypeChange = (selectedPlaceType) => {
+    setEventPlaceType(selectedPlaceType);
   };
 
   return (
@@ -170,69 +243,80 @@ const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
               onChange={(e) => setEventDescription(e.target.value)}
             ></textarea>
           </label>
-          <button onClick={handleSave}>Save Event</button>
+          <button onClick={handleSave}>{buttonText}</button>
+          {warningMessage && <p style={{ color: 'red' }}>{warningMessage}</p>}
         </div>
         <div className="right-half">
           <h2>Create a New Event</h2>
           <label>
             Event Name:
-            <input type="text" value={eventName} onChange={(e) => setEventName(e.target.value)} />
+            <input type="text" value={eventName} onChange={(e) => setEventName(e.target.value)} required/>
           </label>
-          <label>
-            Event Start Date:
-            <input
-              type="date"
-              value={eventStartDate}
-              onChange={(e) => setEventStartDate(e.target.value)}
-            />
-          </label>
-          <label>
-            Event End Date:
-            <input
-              type="date"
-              value={eventEndDate}
-              onChange={(e) => setEventEndDate(e.target.value)}
-            />
-          </label>
+          <div className="modal-date-inputs">
+            <label>
+              Event Start Date:
+              <input
+                type="date"
+                value={eventStartDate}
+                min={today}
+                onChange={(e) => setEventStartDate(e.target.value)}
+                required
+              />
+            </label>
+            <label>
+              Event End Date:
+              <input
+                type="date"
+                value={eventEndDate}
+                min={eventStartDate || today}
+                disabled={isEndDateDisabled}
+                onChange={(e) => setEventEndDate(e.target.value)}
+                required
+              />
+            </label>
+          </div>
           <label>
             Event Time:
             <input type="time" value={eventTime} onChange={(e) => setEventTime(e.target.value)} />
           </label>
           <label>
             Event Fee:
-            <select value={eventFee} onChange={(e) => setEventFee(parseInt(e.target.value))}>
-              <option value={1}>Level 1</option>
-              <option value={2}>Level 2</option>
-              <option value={3}>Level 3</option>
-              <option value={4}>Level 4</option>
-              <option value={5}>Level 5</option>
-            </select>
+            <Slider values={eventFeeValues} value={eventFee} onChange={setEventFee} required/>
           </label>
           <label>
-            Event Category:
-            <select value={eventCategory} onChange={(e) => setEventCategory(e.target.value)}>
-              {/* Add category options based on your requirements */}
-              <option value="category1">Category 1</option>
-              <option value="category2">Category 2</option>
-              {/* ... (add more options) */}
+            Category:
+            <select value={selectedCategory} onChange={(e) => handleCategoryChange(e.target.value)} required>
+              <option value="">Select Category</option>
+              {Object.keys(categoryData).map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
             </select>
           </label>
-          <label>
-            Event Subcategory:
-            <select value={eventSubcategory} onChange={(e) => setEventSubcategory(e.target.value)}>
-              {/* Add subcategory options based on your requirements */}
-              <option value="subcategory1">Subcategory 1</option>
-              <option value="subcategory2">Subcategory 2</option>
-              {/* ... (add more options) */}
-            </select>
-          </label>
+          {selectedCategory && (
+            <label>
+              Subcategory:
+              <select value={selectedSubcategory} onChange={(e) => setSelectedSubcategory(e.target.value)}>
+                <option value="">Select Subcategory</option>
+                {subcategories.map((subcategory) => (
+                  <option key={subcategory} value={subcategory}>
+                    {subcategory}
+                  </option>
+                ))}
+              </select>
+            </label>
+          )}
+
           <label>
             Event Place Type:
-            <select value={eventPlaceType} onChange={(e) => setEventPlaceType(e.target.value)}>
-              {/* Add place type options based on your requirements */}
-              <option value="placeType1">Place Type 1</option>
-              <option value="placeType2">Place Type 2</option>
-              {/* ... (add more options) */}
+            <select value={eventPlaceType} onChange={(e) => handlePlaceTypeChange(e.target.value)} required>
+              <option value="" disabled>Select a Place Type</option>
+              {placeTypes.map((type) => (
+                <option key={type} value={type}>
+                  {type}
+                </option>
+              ))}
             </select>
           </label>
           <label>
@@ -240,15 +324,8 @@ const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
             <input type="text" value={eventLocation} readOnly />
           </label>
           <label>
-            Planned Participants (1-5):
-            <input
-              type="range"
-              min="1"
-              max="5"
-              value={plannedParticipants}
-              onChange={(e) => setPlannedParticipants(parseInt(e.target.value))}
-            />
-            {plannedParticipants}
+            Planned Participants:
+            <Slider values={participantValues} value={plannedParticipants} onChange={setPlannedParticipants} required/>
           </label>
         </div>
       </div>

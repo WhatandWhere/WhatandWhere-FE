@@ -9,10 +9,8 @@ export default function AboutUs() {
         <div className="inner-container">
           <span className="primaryText">About us</span>
           <span className="secondaryText">
-            WhatAndWhere is a website for finding and participating in events in{" "}
-            <strong>Poland</strong>. On our site, you can find and take part in{" "}
-            <strong>various events</strong> throughout the country. Find your
-            next unique experience on <strong>WhatAndWhere</strong>!
+            
+WhatAndWhere is more than event discovery; it's a platform for finding and creating unique experiences in Poland. Explore diverse events or publish your own, shaping the future of experiences. Join us, where you're not just an attendee but an architect of unforgettable moments on WhatAndWhere, turning every event into an extraordinary adventure.
           </span>
         </div>
         <div className="btns">
