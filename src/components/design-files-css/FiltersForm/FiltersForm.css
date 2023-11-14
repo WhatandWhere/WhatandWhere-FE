@@ -1,3 +1,7 @@
+/* #1677ff */
+/* #495057 */
+/* #868e96 */
+
 * {
   margin: 0;
   padding: 0;
@@ -5,12 +9,24 @@
 }
 
 .form-container {
-  width: 80%;
-  height: 80%;
+  height: fit-content;
+  width: fit-content;
+  padding: 12px;
+  background: #fff;
   /* background-color: red; */
+  /* border: 2px solid #1677ff;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  border-radius: 20px;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 12px;
 }

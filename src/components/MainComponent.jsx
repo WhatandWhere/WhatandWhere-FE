@@ -47,7 +47,7 @@ const MainComponent = () => {
       </div>
 
       <div className="filter-section">
-        <FiltersForm />
+      <FiltersForm />
       </div>
 
       <div className="map-section">

@@ -20,7 +20,7 @@ export default function DropdownComp() {
   };
 
   return (
-    <div className="container">
+    <div className="category-container">
       <h3>Category</h3>
       <Select
         options={options}
