@@ -3,7 +3,7 @@ import EventListMainPage from "./EventListMainPage";
 import MapComponent from "../components/MapComponent";
 import AddEventModal from "../components/AddEventModal";
 import NavBar from "../components/entry-page/Navbar";
-import FiltersForm from "./FiltersForm/FiltersForm";
+import FiltersForm from "./FiltersForm/FiltersForm.jsx";
 
 const MainComponent = () => {
   const [isEditMode, setIsEditMode] = useState(false);
@@ -47,7 +47,7 @@ const MainComponent = () => {
       </div>
 
       <div className="filter-section">
-      <FiltersForm />
+        <FiltersForm />
       </div>
 
       <div className="map-section">

@@ -1,6 +1,5 @@
 import React from "react";
 import "../design-files-css/FiltersForm/FiltersForm.css";
-import DateRangeComp from "./DateRangeComp";
 import RangeValueComp from "./RangeValueComp";
 import DropdownComp from "../FiltersForm/DropdownComp.jsx";
 import DatePickerComp from "./DatePickerComp.jsx";
