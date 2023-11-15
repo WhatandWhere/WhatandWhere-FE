@@ -1,5 +1,6 @@
 .g-container {
   margin-bottom: 50px;
+  background: #fff;
 }
 
 .inner-container {
@@ -11,6 +12,7 @@
   width: 60%;
   margin: 0 auto;
   margin-bottom: 16px;
+  background: #fff;
 }
 
 .inner-container .primaryText {
