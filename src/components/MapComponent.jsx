@@ -1,14 +1,14 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
-import '../components/design-files-css/Map.css';
-import EventPopup from '../components/EventPopup.jsx';
-import axios from 'axios';
-import 'leaflet.locatecontrol/dist/L.Control.Locate.css'; // Import the CSS for the Locate control
-import 'leaflet.locatecontrol'; // Import the Locate control
-import SearchSuggestions from '../components/SearchSuggestions';
-import EventDetailsModal from '../components/EventDetailsModal';
+import React, { useRef, useEffect, useState } from "react";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import L from "leaflet";
+import "../components/design-files-css/Map.css";
+import EventPopup from "../components/EventPopup.jsx";
+import axios from "axios";
+import "leaflet.locatecontrol/dist/L.Control.Locate.css"; // Import the CSS for the Locate control
+import "leaflet.locatecontrol"; // Import the Locate control
+import SearchSuggestions from "../components/SearchSuggestions";
+import EventDetailsModal from "../components/EventDetailsModal";
 
 function MapComponent({ onMapClick, newEventLocation }) {
 	const mapCenter = [51.10978812505445, 17.03095731439865];
@@ -149,20 +149,19 @@ function MapComponent({ onMapClick, newEventLocation }) {
 		// setSuggestions([]);
 	};
 
-
 	const handleAddressSearch = async () => {
 		if (searchQuery) {
-		try {
-			const response = await axios.get(
-			`https://nominatim.openstreetmap.org/search?format=json&q=${searchQuery}`
-			);
-			if (response.data.length > 0) {
-			const { lat, lon } = response.data[0];
-			mapRef.current.setView([lat, lon], zoomLevel);
+			try {
+				const response = await axios.get(
+					`https://nominatim.openstreetmap.org/search?format=json&q=${searchQuery}`
+				);
+				if (response.data.length > 0) {
+					const { lat, lon } = response.data[0];
+					mapRef.current.setView([lat, lon], zoomLevel);
+				}
+			} catch (error) {
+				console.error("Error searching for address:", error);
 			}
-		} catch (error) {
-			console.error('Error searching for address:', error);
-		}
 		}
 		setSuggestions([]); // Clear suggestions after selecting one
 	};
@@ -170,7 +169,7 @@ function MapComponent({ onMapClick, newEventLocation }) {
 	const handleSearchInputBlur = () => {
 		// Clear suggestions only if no suggestion was selected
 		if (!selectedSuggestion) {
-		setSuggestions([]);
+			setSuggestions([]);
 		}
 	};
 
@@ -186,68 +185,66 @@ function MapComponent({ onMapClick, newEventLocation }) {
 	};
 
 	return (
-		<MapContainer
-		center={mapCenter}
-		zoom={zoomLevel}
-		className="MapContainer"
-		ref={mapRef}
-		>
-		<TileLayer
-			//url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-			url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
-			//url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}.png"
-			//url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.png"
-			//url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-			maxZoom={19}
-		/>
-
-		<div className="search-box">
-			<input
-			className='input-search'
-			type="text"
-			placeholder="Search..."
-			value={searchQuery}
-			onChange={handleSearchInputChange}
-			onKeyDown={(e) => {
-				if (e.key === 'Enter') {
-				handleAddressSearch();
-				}
-			}}
+		<MapContainer center={mapCenter} zoom={zoomLevel} className="MapContainer" ref={mapRef}>
+			<TileLayer
+				//url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+				url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+				//url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}.png"
+				//url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.png"
+				//url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+				maxZoom={19}
 			/>
-			<button className="btn-search" onClick={handleAddressSearch}>
-			<img src="/magnifying-glass.png" alt='mglass'/>
-			</button>
-			{suggestions.length > 0 && (
-			<SearchSuggestions suggestions={suggestions} onSuggestionClick={handleSuggestionClick} />
+
+			<div className="search-box">
+				<input
+					className="input-search"
+					type="text"
+					placeholder="Search..."
+					value={searchQuery}
+					onChange={handleSearchInputChange}
+					onKeyDown={(e) => {
+						if (e.key === "Enter") {
+							handleAddressSearch();
+						}
+					}}
+				/>
+				<button className="btn-search" onClick={handleAddressSearch}>
+					<img src="/magnifying-glass.png" alt="mglass" />
+				</button>
+				{suggestions.length > 0 && (
+					<SearchSuggestions
+						suggestions={suggestions}
+						onSuggestionClick={handleSuggestionClick}
+					/>
+				)}
+			</div>
+
+			{markers.map((marker, index) => (
+				<Marker key={index} position={marker.position} icon={customIcon}>
+					<Popup>
+						{/* Pass the onPopupClick function to the Popup */}
+						<EventPopup event={marker} onPopupClick={handlePopupClick} />
+					</Popup>
+				</Marker>
+			))}
+
+			{newEventLocation && (
+				<Marker position={newEventLocation} icon={customIcon}>
+					<Popup>
+						{/* Pass the onPopupClick function to the Popup */}
+						<EventPopup event={newEventLocation} onPopupClick={handlePopupClick} />
+					</Popup>
+				</Marker>
 			)}
-		</div>
 
-		{markers.map((marker, index) => (
-			<Marker key={index} position={marker.position} icon={customIcon}>
-			<Popup>
-				{/* Pass the onPopupClick function to the Popup */}
-				<EventPopup event={marker} onPopupClick={handlePopupClick} />
-			</Popup>
-			</Marker>
-		))}
-
-		{newEventLocation && (
-			<Marker position={newEventLocation} icon={customIcon}>
-			<Popup>
-				{/* Pass the onPopupClick function to the Popup */}
-				<EventPopup event={newEventLocation} onPopupClick={handlePopupClick} />
-			</Popup>
-			</Marker>
-		)}
-
-		{/* EventDetailsModal */}
-		<EventDetailsModal
-			isOpen={isEventDetailsModalOpen}
-			onClose={() => setIsEventDetailsModalOpen(false)}
-			eventDetails={selectedEventDetails} // Pass the selected event details to the modal
-		/>
+			{/* EventDetailsModal */}
+			<EventDetailsModal
+				isOpen={isEventDetailsModalOpen}
+				onClose={() => setIsEventDetailsModalOpen(false)}
+				eventDetails={selectedEventDetails} // Pass the selected event details to the modal
+			/>
 		</MapContainer>
 	);
-};
+}
 
 export default MapComponent;
