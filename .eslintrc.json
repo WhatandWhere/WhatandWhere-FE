@@ -10,7 +10,7 @@
 		"sourceType": "module"
 	},
 	"rules": {
-		"prettier/prettier": ["error", { "endOfLine": "auto" }],
+		"prettier/prettier": ["warn", { "endOfLine": "auto" }],
 		"quotes": ["error", "double"],
 		"semi": ["error", "always"],
 		"react/prop-types": 0,

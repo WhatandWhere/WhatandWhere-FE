@@ -1,6 +1,7 @@
 import React from "react";
 import "../design-files-css/entry-page/AboutUs.css";
 import "../design-files-css/entry-page/Button.css";
+import Button from "./Button";
 
 export default function AboutUs() {
 	return (

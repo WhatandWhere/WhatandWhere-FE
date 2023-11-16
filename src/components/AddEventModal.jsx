@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "../components/design-files-css/AddEventModal.css";
-import Slider from "../components/AddEventModalSlider.jsx";
+import "./design-files-css/AddEventModal.css";
+import Slider from "./AddEventModalSlider";
 
 const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
 	const [eventName, setEventName] = useState("");
@@ -18,14 +18,29 @@ const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
 	const [imagePreviews, setImagePreviews] = useState([]); // State to store image previews
 	const [removedImages, setRemovedImages] = useState([]);
 
-	// Automatically fill the location input field
-	useEffect(() => {
-		if (location) {
-			// Format the location for display (e.g., latitude and longitude)
-			const locationText = `Latitude: ${location.lat}, Longitude: ${location.lng}`;
-			setEventLocation(locationText);
+	const handleImageChange = (e) => {
+		const selectedImages = Array.from(e.target.files);
+		const limitedImages = selectedImages.slice(0, 3);
+
+		// Update the state with the selected images
+		setEventImages(limitedImages);
+
+		// Generate image previews
+		const previews = [];
+		for (const image of limitedImages) {
+			const reader = new FileReader();
+			reader.onload = (e) => {
+				previews.push({
+					src: e.target.result,
+					file: image,
+				});
+				if (previews.length === limitedImages.length) {
+					setImagePreviews(previews);
+				}
+			};
+			reader.readAsDataURL(image);
 		}
-	}, [location]);
+	};
 
 	const handleRemoveImage = (index) => {
 		const updatedPreviews = [...imagePreviews];
@@ -98,6 +113,7 @@ const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
 	}, [location]);
 
 	const [buttonText, setButtonText] = useState("Save Event");
+	const participantValues = [1, 5, 10, 20, 50, 100];
 
 	useEffect(() => {
 		const maxParticipantValue = Math.max(...participantValues);
@@ -110,6 +126,14 @@ const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
 	}, [plannedParticipants]);
 
 	const [warningMessage, setWarningMessage] = useState("");
+
+	const sendRequestToTerritoryManager = () => {
+		// Implement the logic to send a request to the territory manager here
+		// For example, you can make an API call or perform any necessary actions
+		// You may also show a confirmation message to the user
+		alert("Request sent to the territory manager");
+		// Optionally, perform additional actions or UI updates
+	};
 
 	const handleSave = () => {
 		// Validate required fields
@@ -153,14 +177,6 @@ const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
 		onClose();
 	};
 
-	const sendRequestToTerritoryManager = () => {
-		// Implement the logic to send a request to the territory manager here
-		// For example, you can make an API call or perform any necessary actions
-		// You may also show a confirmation message to the user
-		alert("Request sent to the territory manager");
-		// Optionally, perform additional actions or UI updates
-	};
-
 	const [selectedCategory, setSelectedCategory] = useState("");
 	const [subcategories, setSubcategories] = useState([]);
 	const [selectedSubcategory, setSelectedSubcategory] = useState("");
@@ -177,9 +193,7 @@ const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
 		setSubcategories(categoryData[category] || []);
 	};
 
-	// Slider values
 	const eventFeeValues = ["Free", 5, 10, 20, 50, 100, 200, 300, 400, "500+"];
-	const participantValues = [1, 5, 10, 20, 50, 100];
 
 	const today = new Date().toISOString().split("T")[0];
 	const isEndDateDisabled = !eventStartDate;
@@ -203,9 +217,10 @@ const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
 					&times;
 				</button>
 				<div className="left-half">
-					<label>
+					<label htmlFor="event-image">
 						Event Image (Max 3 images, 2MB each)
 						<input
+							id="event-image"
 							type="file"
 							accept="image/*"
 							onChange={handleImageChange}
@@ -228,9 +243,10 @@ const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
 							</button>
 						</div>
 					))}
-					<label>
+					<label htmlFor="event-description">
 						Event Description
 						<textarea
+							id="event-description"
 							value={eventDescription}
 							onChange={(e) => setEventDescription(e.target.value)}
 						></textarea>
@@ -240,9 +256,10 @@ const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
 				</div>
 				<div className="right-half">
 					<h2>Create a New Event</h2>
-					<label>
+					<label htmlFor="event-name">
 						Event Name
 						<input
+							id="event-name"
 							type="text"
 							value={eventName}
 							onChange={(e) => setEventName(e.target.value)}
@@ -250,9 +267,10 @@ const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
 						/>
 					</label>
 					<div className="modal-date-inputs">
-						<label>
+						<label htmlFor="event-start-date">
 							Event Start Date
 							<input
+								id="event-start-date"
 								type="date"
 								value={eventStartDate}
 								min={today}
@@ -260,9 +278,10 @@ const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
 								required
 							/>
 						</label>
-						<label>
+						<label htmlFor="event-end-date">
 							Event End Date
 							<input
+								id="event-end-date"
 								type="date"
 								value={eventEndDate}
 								min={eventStartDate || today}
@@ -272,26 +291,29 @@ const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
 							/>
 						</label>
 					</div>
-					<label>
+					<label htmlFor="event-time">
 						Event Time
 						<input
+							id="event-time"
 							type="time"
 							value={eventTime}
 							onChange={(e) => setEventTime(e.target.value)}
 						/>
 					</label>
-					<label>
+					<label htmlFor="event-fee">
 						Event Fee
 						<Slider
+							id="event-fee"
 							values={eventFeeValues}
 							value={eventFee}
 							onChange={setEventFee}
 							required
 						/>
 					</label>
-					<label>
+					<label htmlFor="event-category">
 						Category
 						<select
+							id="event-category"
 							value={selectedCategory}
 							onChange={(e) => handleCategoryChange(e.target.value)}
 							required
@@ -305,9 +327,10 @@ const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
 						</select>
 					</label>
 					{selectedCategory && (
-						<label>
+						<label htmlFor="event-subcategory">
 							Subcategory
 							<select
+								id="event-subcategory"
 								value={selectedSubcategory}
 								onChange={(e) => setSelectedSubcategory(e.target.value)}
 							>
@@ -321,9 +344,10 @@ const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
 						</label>
 					)}
 
-					<label>
+					<label htmlFor="event-place-type">
 						Event Place Type
 						<select
+							id="event-place-type"
 							value={eventPlaceType}
 							onChange={(e) => handlePlaceTypeChange(e.target.value)}
 							required
@@ -338,13 +362,14 @@ const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
 							))}
 						</select>
 					</label>
-					<label>
+					<label htmlFor="event-location">
 						Event Location
-						<input type="text" value={eventLocation} readOnly />
+						<input id="event-location" type="text" value={eventLocation} readOnly />
 					</label>
-					<label>
+					<label htmlFor="event-planned-participants">
 						Planned Participants
 						<Slider
+							id="event-planned-participants"
 							values={participantValues}
 							value={plannedParticipants}
 							onChange={setPlannedParticipants}
