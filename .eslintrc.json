@@ -11,8 +11,8 @@
 	},
 	"rules": {
 		"prettier/prettier": ["warn", { "endOfLine": "auto" }],
-		"quotes": ["error", "double"],
-		"semi": ["error", "always"],
+		"quotes": ["warn", "double"],
+		"semi": ["warn", "always"],
 		"react/prop-types": 0,
 		"import/prefer-default-export": 0,
 		"no-return-assign": 0,
