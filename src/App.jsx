@@ -6,6 +6,8 @@ import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import MainPage from "./pages/MainPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
+import ProfilePage from "./pages/ProfilePage";
+import EventManagersProfilePage from "./pages/EventManagersProfilePage";
 import "./App.css";
 import ProtectedRoute from "./components/utilcomponents/protectedRoute";
 import { AuthContext } from "./context/context";
@@ -40,6 +42,8 @@ function App() {
 							}
 						/>
 						<Route path="/termsAndConditions" element={<TermsAndConditionsPage />} />
+						<Route path="/profile" element={<ProfilePage />} />
+						<Route path="/emprofile" element={<EventManagersProfilePage />} />
 						<Route path="*" element={<Navigate replace to="/" />} />
 					</Routes>
 				</div>
