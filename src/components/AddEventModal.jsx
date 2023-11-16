@@ -18,29 +18,14 @@ const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
   const [imagePreviews, setImagePreviews] = useState([]); // State to store image previews
   const [removedImages, setRemovedImages] = useState([]);
 
-  const handleImageChange = (e) => {
-    const selectedImages = Array.from(e.target.files);
-    const limitedImages = selectedImages.slice(0, 3);
-
-    // Update the state with the selected images
-    setEventImages(limitedImages);
-
-    // Generate image previews
-    const previews = [];
-    for (const image of limitedImages) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        previews.push({
-          src: e.target.result,
-          file: image,
-        });
-        if (previews.length === limitedImages.length) {
-          setImagePreviews(previews);
-        }
-      };
-      reader.readAsDataURL(image);
-    }
-  };
+	// Automatically fill the location input field
+	useEffect(() => {
+		if (location) {
+			// Format the location for display (e.g., latitude and longitude)
+			const locationText = `Latitude: ${location.lat}, Longitude: ${location.lng}`;
+			setEventLocation(locationText);
+		}
+	}, [location]);
 
   const handleRemoveImage = (index) => {
     const updatedPreviews = [...imagePreviews];

@@ -1,6 +1,6 @@
-import React from 'react';
-import EventTags from '../components/EventTags.jsx';
-import '../components/design-files-css/EventPopup.css';
+import React from "react";
+import EventTags from "./EventTags";
+import "./design-files-css/EventPopup.css";
 
 const EventPopup = ({ event, onPopupClick }) => {
   return (
