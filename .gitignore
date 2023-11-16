@@ -5,6 +5,7 @@
 /.pnp
 .cache
 /dist
+/.idea
 
 # testing
 /coverage
