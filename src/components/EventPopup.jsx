@@ -2,9 +2,9 @@ import React from 'react';
 import EventTags from '../components/EventTags.jsx';
 import '../components/design-files-css/EventPopup.css';
 
-const EventPopup = ({ event }) => {
+const EventPopup = ({ event, onPopupClick }) => {
   return (
-    <div className="event-popup">
+    <div className="event-popup" onClick={() => onPopupClick(event)}>
       <img className="event-image" src={event.image} alt={event.name} />
       <h3 className="event-name">{event.name}</h3>
       <p className="event-description">{event.description}</p>

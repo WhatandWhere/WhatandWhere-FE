@@ -8,6 +8,7 @@ import axios from 'axios';
 import 'leaflet.locatecontrol/dist/L.Control.Locate.css'; // Import the CSS for the Locate control
 import 'leaflet.locatecontrol'; // Import the Locate control
 import SearchSuggestions from '../components/SearchSuggestions';
+import EventDetailsModal from '../components/EventDetailsModal';
 
 const MapComponent = ({ onMapClick, newEventLocation }) => {
   const mapCenter = [51.10978812505445, 17.03095731439865];
@@ -176,6 +177,17 @@ const MapComponent = ({ onMapClick, newEventLocation }) => {
     }
   };
 
+  const [isEventDetailsModalOpen, setIsEventDetailsModalOpen] = useState(false);
+  const [selectedEventDetails, setSelectedEventDetails] = useState(null);
+
+  // Function to handle Popup click and open EventDetailsModal
+  const handlePopupClick = (event) => {
+    // Update the state with the selected event details
+    setSelectedEventDetails(event);
+    // Open the EventDetailsModal
+    setIsEventDetailsModalOpen(true);
+  };
+
   return (
     <MapContainer
       center={mapCenter}
@@ -216,16 +228,27 @@ const MapComponent = ({ onMapClick, newEventLocation }) => {
       {markers.map((marker, index) => (
         <Marker key={index} position={marker.position} icon={customIcon}>
           <Popup>
-            <EventPopup event={marker} />
+            {/* Pass the onPopupClick function to the Popup */}
+            <EventPopup event={marker} onPopupClick={handlePopupClick} />
           </Popup>
         </Marker>
       ))}
 
       {newEventLocation && (
         <Marker position={newEventLocation} icon={customIcon}>
-          <EventPopup event={newEventLocation} isNewEvent />
+          <Popup>
+            {/* Pass the onPopupClick function to the Popup */}
+            <EventPopup event={newEventLocation} onPopupClick={handlePopupClick} />
+          </Popup>
         </Marker>
       )}
+
+      {/* EventDetailsModal */}
+      <EventDetailsModal
+        isOpen={isEventDetailsModalOpen}
+        onClose={() => setIsEventDetailsModalOpen(false)}
+        eventDetails={selectedEventDetails} // Pass the selected event details to the modal
+      />
     </MapContainer>
   );
 };

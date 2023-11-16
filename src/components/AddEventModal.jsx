@@ -216,7 +216,7 @@ const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
         </button>
         <div className="left-half">
           <label>
-            Event Image (Max 3 images, 2MB each):
+            Event Image (Max 3 images, 2MB each)
             <input
               type="file"
               accept="image/*"
@@ -237,7 +237,7 @@ const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
             </div>
           ))}
           <label>
-            Event Description:
+            Event Description
             <textarea
               value={eventDescription}
               onChange={(e) => setEventDescription(e.target.value)}
@@ -249,12 +249,12 @@ const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
         <div className="right-half">
           <h2>Create a New Event</h2>
           <label>
-            Event Name:
+            Event Name
             <input type="text" value={eventName} onChange={(e) => setEventName(e.target.value)} required/>
           </label>
           <div className="modal-date-inputs">
             <label>
-              Event Start Date:
+              Event Start Date
               <input
                 type="date"
                 value={eventStartDate}
@@ -264,7 +264,7 @@ const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
               />
             </label>
             <label>
-              Event End Date:
+              Event End Date
               <input
                 type="date"
                 value={eventEndDate}
@@ -276,15 +276,15 @@ const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
             </label>
           </div>
           <label>
-            Event Time:
+            Event Time
             <input type="time" value={eventTime} onChange={(e) => setEventTime(e.target.value)} />
           </label>
           <label>
-            Event Fee:
+            Event Fee
             <Slider values={eventFeeValues} value={eventFee} onChange={setEventFee} required/>
           </label>
           <label>
-            Category:
+            Category
             <select value={selectedCategory} onChange={(e) => handleCategoryChange(e.target.value)} required>
               <option value="">Select Category</option>
               {Object.keys(categoryData).map((category) => (
@@ -296,7 +296,7 @@ const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
           </label>
           {selectedCategory && (
             <label>
-              Subcategory:
+              Subcategory
               <select value={selectedSubcategory} onChange={(e) => setSelectedSubcategory(e.target.value)}>
                 <option value="">Select Subcategory</option>
                 {subcategories.map((subcategory) => (
@@ -309,7 +309,7 @@ const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
           )}
 
           <label>
-            Event Place Type:
+            Event Place Type
             <select value={eventPlaceType} onChange={(e) => handlePlaceTypeChange(e.target.value)} required>
               <option value="" disabled>Select a Place Type</option>
               {placeTypes.map((type) => (
@@ -320,11 +320,11 @@ const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
             </select>
           </label>
           <label>
-            Event Location:
+            Event Location
             <input type="text" value={eventLocation} readOnly />
           </label>
           <label>
-            Planned Participants:
+            Planned Participants
             <Slider values={participantValues} value={plannedParticipants} onChange={setPlannedParticipants} required/>
           </label>
         </div>
