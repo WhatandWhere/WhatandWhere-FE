@@ -1,10 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../design-files-css/entry-page/Button.css";
 
-export function Button({ children, buttonStyle, onClick }) {
+export default function Button({ children, buttonStyle, buttonLink }) {
 	return (
-		<button onClick={onClick} type="button" className={buttonStyle}>
-			{children}
-		</button>
+		<Link to={buttonLink}>
+			<button className={buttonStyle} type="button">
+				{children}
+			</button>
+		</Link>
 	);
 }
