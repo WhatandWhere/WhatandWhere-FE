@@ -3,6 +3,7 @@ import EventListMainPage from "./EventListMainPage";
 import MapComponent from "./MapComponent";
 import AddEventModal from "./AddEventModal";
 import NavBar from "./entry-page/Navbar";
+import FiltersForm from "./FiltersForm/FiltersForm";
 
 function MainComponent() {
 	const [isEditMode, setIsEditMode] = useState(false);
@@ -45,7 +46,9 @@ function MainComponent() {
 				<NavBar />
 			</div>
 
-			<div className="filter-section">{/* Your filters content goes here */}</div>
+			<div className="filter-section">
+				<FiltersForm />
+			</div>
 
 			<div className="map-section">
 				<MapComponent onMapClick={handleMapClick} newEventLocation={newEventLocation} />
