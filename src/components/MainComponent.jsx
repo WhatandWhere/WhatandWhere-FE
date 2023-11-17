@@ -42,7 +42,9 @@ function MainComponent() {
 
 	return (
 		<div className="main-page-all">
-			<NavBar />
+			<div className="top-bar">
+				<NavBar />
+			</div>
 
 			<div className="filter-section">
 				<FiltersForm />

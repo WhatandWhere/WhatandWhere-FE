@@ -23,6 +23,7 @@
 /* TopBar Section (100% width) */
 .main-page-all .top-bar {
 	width: 100%; /* Take full width */
+	height: fit-content;
 	background-color: #ff9500;
 	box-sizing: border-box; /* Include padding and border in width */
 	display: flex;
