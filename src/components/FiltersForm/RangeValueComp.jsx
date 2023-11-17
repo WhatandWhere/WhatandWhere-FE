@@ -8,15 +8,15 @@ let MAX = 100;
 export default function RangeValueComp({ children, minValue, maxValue, unit, secondaryInfo }) {
 	const [values, setValues] = useState([MIN, MAX]);
 
-	MIN = minValue ? minValue : 5;
-	MAX = maxValue ? maxValue : 100;
+	MIN = minValue;
+	MAX = maxValue;
 
 	return (
 		<div className="range-container">
 			<h3>{children}</h3>
 			<h4>{secondaryInfo}</h4>
 			<div>
-				<div className={"values"}>
+				<div className="values">
 					{values[0]} - {values[1]} {unit}
 				</div>
 			</div>
@@ -30,7 +30,7 @@ export default function RangeValueComp({ children, minValue, maxValue, unit, sec
         </h4>
       </div> */}
 
-			<Slider className={"slider"} onChange={setValues} value={values} min={MIN} max={MAX} />
+			<Slider className="slider" onChange={setValues} value={values} min={MIN} max={MAX} />
 		</div>
 	);
 }
