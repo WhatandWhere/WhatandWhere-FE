@@ -7,7 +7,7 @@ import DatePickerComp from "./DatePickerComp";
 
 export default function FiltersForm() {
 	return (
-		<section className="form-container">
+		<section className="filters-form-container">
 			<DatePickerComp />
 			<RangeValueComp
 				minValue={5}
