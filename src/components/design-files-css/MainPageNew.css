@@ -1,0 +1,106 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.main-page-container {
+	background: #000;
+}
+
+.filters-map-section {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	gap: 12px;
+	margin-top: 12px;
+	margin-bottom: 12px;
+}
+
+.filters-section {
+	margin-top: 12px;
+	margin-left: 12px;
+}
+
+.map-component {
+	display: inline-block;
+	height: 85vh;
+
+	flex: 2; /* Take 2/3 of available width */
+	background-color: #f5f7f6;
+	border: 0.5em solid #ff5600;
+	border-radius: 7em;
+	box-sizing: border-box; /* Include padding and border in width */
+	overflow: hidden; /* Hide overflowing content */
+	position: relative;
+	z-index: 1;
+
+	margin-right: 12px;
+}
+
+.list-section {
+	width: 100%;
+	background-color: #101820;
+	/* border: 0.125em solid #ddd; */
+	box-sizing: border-box;
+}
+
+/* Edit Button */
+.main-page-container .add-edit-event-button {
+	position: absolute;
+	bottom: 19%;
+	right: 0%;
+	width: 5%; /* Relative width */
+	height: 10%; /* Relative height (to create a square) */
+	background: linear-gradient(135deg, #101820 5%, #ff5600 95%);
+	color: #f5f7f6;
+	border: none;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	z-index: 2; /* Place the button above the map */
+	box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+	transition:
+		transform 0.2s,
+		background 0.2s;
+	font-family: Arial Rounded MT Bold;
+	font-size: 100%;
+}
+
+.main-page-container .add-edit-event-button:hover {
+	transform: scale(1.1);
+}
+
+.main-page-container .add-edit-event-button-clicked {
+	position: absolute;
+	bottom: 19%;
+	right: 0%;
+	width: 5%; /* Relative width */
+	height: 10%; /* Relative height (to create a square) */
+	background: linear-gradient(135deg, #ff5600 5%, #101820 95%);
+	color: #101820;
+	border: none;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	z-index: 2; /* Place the button above the map */
+	box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+	transition:
+		transform 0.2s,
+		background 0.2s;
+	font-family: Arial Rounded MT Bold;
+	font-size: 110%;
+}
+
+/* List Section (100% width) */
+.main-page-container .list-section {
+	width: 100%;
+	background-color: #101820;
+	/* border: 0.125em solid #ddd; */
+	box-sizing: border-box;
+}
