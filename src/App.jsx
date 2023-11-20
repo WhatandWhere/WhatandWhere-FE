@@ -5,11 +5,13 @@ import EntryPage from "./pages/EntryPage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import MainPage from "./pages/MainPage";
+import ProfilePage from "./pages/ProfilePage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
-import "./App.css";
 import ProtectedRoute from "./components/utilcomponents/protectedRoute";
 // eslint-disable-next-line import/no-named-as-default
 import AuthProvider from "./context/context";
+import EventManagersProfilePage from "./pages/EventManagersProfilePage";
+import "./App.css";
 
 function App() {
 	return (
@@ -29,6 +31,8 @@ function App() {
 							}
 						/>
 						<Route path="/termsAndConditions" element={<TermsAndConditionsPage />} />
+						<Route path="/profile" element={<ProfilePage />} />
+						<Route path="/emprofile" element={<EventManagersProfilePage />} />
 						<Route path="*" element={<Navigate replace to="/" />} />
 					</Routes>
 				</div>
