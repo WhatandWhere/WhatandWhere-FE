@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "../design-files-css/profile-page-css/UpperPartOfThePage.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 function UpperPartOfThePage({ showEditButton }) {
 	const username = "MockUsername";
@@ -10,6 +12,7 @@ function UpperPartOfThePage({ showEditButton }) {
 	const [email, setEmail] = useState(userEmail);
 	const [phone, setPhone] = useState(userPhone);
 	const [profilePic, setProfilePic] = useState(userProfilePic);
+	const [isImageUploaded, setIsImageUploaded] = useState(false);
 
 	// Function to handle profile picture change
 	const handleProfilePicChange = (e) => {
@@ -28,6 +31,7 @@ function UpperPartOfThePage({ showEditButton }) {
 			}
 
 			setProfilePic(URL.createObjectURL(file));
+			setIsImageUploaded(true);
 		}
 	};
 
@@ -74,6 +78,9 @@ function UpperPartOfThePage({ showEditButton }) {
 							onChange={handleProfilePicChange}
 							accept="image/*"
 						/>
+						{isImageUploaded && (
+							<FontAwesomeIcon icon={faCheck} className="uploaded-tick" />
+						)}
 					</div>
 				</div>
 			) : (
