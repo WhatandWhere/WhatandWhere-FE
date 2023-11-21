@@ -1,14 +1,13 @@
 import React from "react";
 import Button from "../entry-page/Button";
-import DatePickerComp from "./DatePickerComp";
-import DropdownComp from "./DropdownComp";
-import RangeValueComp from "./RangeValueComp";
-
 import "../design-files-css/FiltersForm/FiltersForm.css";
+import RangeValueComp from "./RangeValueComp";
+import DropdownComp from "./DropdownComp";
+import DatePickerComp from "./DatePickerComp";
 
 export default function FiltersForm() {
 	return (
-		<section className="form-container">
+		<section className="filters-form-container">
 			<DatePickerComp />
 			<RangeValueComp
 				minValue={5}
@@ -30,7 +29,7 @@ export default function FiltersForm() {
 
 			<div className="buttons-container">
 				<Button buttonStyle="primary-medium">Apply filters</Button>
-				<Button buttonStyle="primary-medium">Reset filters</Button>
+				<Button buttonStyle="primary-medium">Reset Filters</Button>
 			</div>
 		</section>
 	);

@@ -1,11 +1,11 @@
 import React from "react";
-import Header from "../components/Header";
+import Navbar from "../components/entry-page/Navbar";
 import LoginComponent from "../components/LoginComponent";
 
 function LoginPage() {
 	return (
 		<div>
-			<Header />
+			<Navbar />
 			<LoginComponent />
 		</div>
 	);
