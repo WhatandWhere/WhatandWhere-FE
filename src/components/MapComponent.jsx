@@ -1,14 +1,14 @@
 import React, { useRef, useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import axios from "axios";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-import "../components/design-files-css/Map.css";
-import EventPopup from "../components/EventPopup.jsx";
-import axios from "axios";
+import "./design-files-css/Map.css";
+import EventPopup from "./EventPopup";
 import "leaflet.locatecontrol/dist/L.Control.Locate.css"; // Import the CSS for the Locate control
 import "leaflet.locatecontrol"; // Import the Locate control
-import SearchSuggestions from "../components/SearchSuggestions";
-import EventDetailsModal from "../components/EventDetailsModal";
+import SearchSuggestions from "./SearchSuggestions";
+import EventDetailsModal from "./EventDetailsModal";
 
 function MapComponent({ onMapClick, newEventLocation }) {
 	const mapCenter = [51.10978812505445, 17.03095731439865];
@@ -179,10 +179,12 @@ function MapComponent({ onMapClick, newEventLocation }) {
 	// Function to handle Popup click and open EventDetailsModal
 	const handlePopupClick = (event) => {
 		// Update the state with the selected event details
+		console.log("Popup clicked, event details:", event);
 		setSelectedEventDetails(event);
 		// Open the EventDetailsModal
 		setIsEventDetailsModalOpen(true);
-	};
+	  };
+	  
 
 	return (
 		<MapContainer center={mapCenter} zoom={zoomLevel} className="MapContainer" ref={mapRef}>
@@ -208,7 +210,7 @@ function MapComponent({ onMapClick, newEventLocation }) {
 						}
 					}}
 				/>
-				<button className="btn-search" onClick={handleAddressSearch}>
+				<button type="button" className="btn-search" onClick={handleAddressSearch}>
 					<img src="/magnifying-glass.png" alt="mglass" />
 				</button>
 				{suggestions.length > 0 && (
@@ -241,7 +243,7 @@ function MapComponent({ onMapClick, newEventLocation }) {
 			<EventDetailsModal
 				isOpen={isEventDetailsModalOpen}
 				onClose={() => setIsEventDetailsModalOpen(false)}
-				eventDetails={selectedEventDetails} // Pass the selected event details to the modal
+				eventDetails={selectedEventDetails}
 			/>
 		</MapContainer>
 	);
