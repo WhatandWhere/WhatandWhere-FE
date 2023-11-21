@@ -55,7 +55,10 @@ function UpperPartOfThePage({ showEditButton }) {
 			return;
 		}
 		// If we're not in edit mode, we will save the current values
-		console.log("Values saved:", { email, phone });
+		console.log("Values saved:", {
+			email,
+			phone,
+		});
 		alert("Values saved!");
 		setIsEditing(false); // Exit editing mode
 	};
@@ -64,12 +67,14 @@ function UpperPartOfThePage({ showEditButton }) {
 		<div className="user-profile">
 			{isEditing ? (
 				<div className="user-image">
-					<input
-						type="file"
-						className="profile-pic-upload"
-						onChange={handleProfilePicChange}
-						accept="image/*"
-					/>
+					<div className="background-for-change-image-button">
+						<input
+							type="file"
+							className="profile-pic-upload"
+							onChange={handleProfilePicChange}
+							accept="image/*"
+						/>
+					</div>
 				</div>
 			) : (
 				<div className="user-image">
