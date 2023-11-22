@@ -251,7 +251,7 @@ const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
 							onChange={(e) => setEventDescription(e.target.value)}
 						></textarea>
 					</label>
-					<button onClick={handleSave}>{buttonText}</button>
+					<button type="button" onClick={handleSave}>{buttonText}</button>
 					{warningMessage && <p style={{ color: "red" }}>{warningMessage}</p>}
 				</div>
 				<div className="right-half">

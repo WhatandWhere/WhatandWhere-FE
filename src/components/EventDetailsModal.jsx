@@ -3,6 +3,7 @@ import "./design-files-css/EventDetailsModal.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import EventFeedbackComponent from "./EventFeedbackComponent";
 
 const EventDetailsModal = ({ isOpen, onClose, eventData }) => {
   if (!isOpen || !eventData) {
@@ -65,6 +66,7 @@ const EventDetailsModal = ({ isOpen, onClose, eventData }) => {
             ))}
           </Slider>
           <p className="event-description">{eventData.description}</p>
+          <EventFeedbackComponent onFeedbackSubmit={onFeedbackSubmit} />
         </div>
         <div className="right-half">
           <h2>Event Details</h2>
