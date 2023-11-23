@@ -15,11 +15,11 @@ export default function FiltersForm({ setEvents }) {
 	});
 	const [enteranceFee, setEnteranceFee] = React.useState({
 		minValue: 0,
-		maxValue: 10000,
+		maxValue: 400,
 	});
 	const [attendeeCount, setAttendeeCount] = React.useState({
 		minValue: 0,
-		maxValue: 10000,
+		maxValue: 400,
 	});
 
 	useEffect(() => {
@@ -32,12 +32,14 @@ export default function FiltersForm({ setEvents }) {
 					Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
 				},
 				params: {
-					startDate: dateFilter.startDate ? dateFilter.startDate.toISOString() : null,
-					endDate: dateFilter.endDate ? dateFilter.endDate.toISOString() : null,
-					minPrice: enteranceFee.minValue ? enteranceFee.minValue : null,
-					maxPrice: enteranceFee.maxValue ? enteranceFee.maxValue : null,
-					minAttendeeCount: attendeeCount.minValue ? attendeeCount.minValue : null,
-					maxAttendeeCount: attendeeCount.maxValue ? attendeeCount.maxValue : null,
+					startDate: dateFilter.startDate ? dateFilter.startDate : null,
+					endDate: dateFilter.endDate ? dateFilter.endDate : null,
+					minPrice: enteranceFee.minValue !== null ? enteranceFee.minValue : null,
+					maxPrice: enteranceFee.maxValue !== null ? enteranceFee.maxValue : null,
+					minAttendeeCount:
+						attendeeCount.minValue != null ? attendeeCount.minValue : null,
+					maxAttendeeCount:
+						attendeeCount.maxValue !== null ? attendeeCount.maxValue : null,
 				},
 			})
 			.then((res) => {
@@ -69,24 +71,36 @@ export default function FiltersForm({ setEvents }) {
 				setEvents(res.data);
 			});
 	};
+	const handelEntranceFee = (event) => {
+		setEnteranceFee({
+			minValue: event[0],
+			maxValue: event[1],
+		});
+	};
+	const handelAttendeeCount = (event) => {
+		setAttendeeCount({
+			minValue: event[0],
+			maxValue: event[1],
+		});
+	};
 	return (
 		<section className="filters-form-container">
 			<DatePickerComp setDateFilter={setDateFilter} />
 			<RangeValueComp
 				minValue={0}
-				maxValue={10000}
+				maxValue={400}
 				unit="zł"
 				secondaryInfo="Choose suitable range for you"
-				setEnteranceFee={setEnteranceFee}
+				handelChange={handelEntranceFee}
 			>
 				Entrance Fee
 			</RangeValueComp>
 			<RangeValueComp
 				minValue={0}
-				maxValue={10000}
+				maxValue={400}
 				unit="members"
 				secondaryInfo="Choose number of visitors"
-				setAttendeeCount={setAttendeeCount}
+				handelChange={handelAttendeeCount}
 			>
 				Attendee count
 			</RangeValueComp>
