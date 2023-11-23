@@ -33,11 +33,15 @@
 }
 
 .event-list-container .event-list {
-	max-width: 100%;
+	min-height: 40px;
+	width: 100%;
+	max-width: 1440px;
 	display: flex;
 	flex-wrap: nowrap; /* prevent wrapping, items will be in one line */
 	justify-content: flex-start; /* align items to the start of container */
 	align-items: center;
+	overflow-x: auto;
+	padding: 10px;
 }
 
 .event-list-container .event-item {

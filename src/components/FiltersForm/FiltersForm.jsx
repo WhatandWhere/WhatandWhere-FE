@@ -6,6 +6,7 @@ import DropdownComp from "./DropdownComp";
 import DatePickerComp from "./DatePickerComp";
 // eslint-disable-next-line import/order
 import axios from "axios";
+import { backendLink } from "../../action/authActions";
 
 export default function FiltersForm({ setEvents }) {
 	const [dateFilter, setDateFilter] = React.useState({
@@ -25,10 +26,24 @@ export default function FiltersForm({ setEvents }) {
 		console.log(dateFilter);
 	}, [dateFilter]);
 	const handelApplyFilters = () => {
-		axios.get(`${process.env.BACK_URL}/api/events`, {}).then((res) => {
-			console.log(res.data);
-			setEvents(res.data);
-		});
+		axios
+			.get(`${backendLink}/api/events`, {
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
+				},
+				params: {
+					startDate: dateFilter.startDate ? dateFilter.startDate.toISOString() : null,
+					endDate: dateFilter.endDate ? dateFilter.endDate.toISOString() : null,
+					minPrice: enteranceFee.minValue ? enteranceFee.minValue : null,
+					maxPrice: enteranceFee.maxValue ? enteranceFee.maxValue : null,
+					minAttendeeCount: attendeeCount.minValue ? attendeeCount.minValue : null,
+					maxAttendeeCount: attendeeCount.maxValue ? attendeeCount.maxValue : null,
+				},
+			})
+			.then((res) => {
+				console.log(res.data);
+				setEvents(res.data);
+			});
 	};
 	const handelResetFilters = () => {
 		setDateFilter({
@@ -43,6 +58,16 @@ export default function FiltersForm({ setEvents }) {
 			minValue: 0,
 			maxValue: 10000,
 		});
+		axios
+			.get(`${backendLink}/api/events`, {
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
+				},
+			})
+			.then((res) => {
+				console.log(res.data);
+				setEvents(res.data);
+			});
 	};
 	return (
 		<section className="filters-form-container">

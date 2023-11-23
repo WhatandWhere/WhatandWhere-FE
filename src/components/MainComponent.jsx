@@ -7,6 +7,7 @@ import FiltersForm from "./FiltersForm/FiltersForm";
 import "./design-files-css/MainPageNew.css";
 // eslint-disable-next-line import/order
 import axios from "axios";
+import { backendLink } from "../action/authActions";
 
 function MainComponent() {
 	const [isEditMode, setIsEditMode] = useState(false);
@@ -17,11 +18,17 @@ function MainComponent() {
 	const [events, setEvents] = useState([]);
 
 	useEffect(() => {
-		axios.get(`${process.env.BACK_URL}/api/events`, {}).then((res) => {
-			console.log(res.data);
-			setEvents(res.data);
-		});
-	});
+		axios
+			.get(`${backendLink}/api/events`, {
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
+				},
+			})
+			.then((res) => {
+				console.log(res.data);
+				setEvents(res.data);
+			});
+	}, []);
 
 	const toggleEditMode = () => {
 		setIsEditMode(!isEditMode);
