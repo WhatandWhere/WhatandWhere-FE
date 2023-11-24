@@ -21,6 +21,7 @@ export default function FiltersForm({ setEvents }) {
 		minValue: 0,
 		maxValue: 400,
 	});
+	const [category, setCategory] = React.useState([]);
 
 	useEffect(() => {
 		console.log(dateFilter);
@@ -40,6 +41,7 @@ export default function FiltersForm({ setEvents }) {
 						attendeeCount.minValue != null ? attendeeCount.minValue : null,
 					maxAttendeeCount:
 						attendeeCount.maxValue !== null ? attendeeCount.maxValue : null,
+					categoryName: category.length !== 0 ? category : null,
 				},
 			})
 			.then((res) => {
@@ -83,6 +85,11 @@ export default function FiltersForm({ setEvents }) {
 			maxValue: event[1],
 		});
 	};
+	const handelCategoryFilter = (event) => {
+		const categories = event.map((category) => category.value);
+		console.log(categories);
+		setCategory(categories);
+	};
 	return (
 		<section className="filters-form-container">
 			<DatePickerComp setDateFilter={setDateFilter} />
@@ -104,7 +111,7 @@ export default function FiltersForm({ setEvents }) {
 			>
 				Attendee count
 			</RangeValueComp>
-			<DropdownComp />
+			<DropdownComp handelChange={handelCategoryFilter} />
 
 			<div className="buttons-container">
 				<Button buttonStyle="primary-medium" onClick={() => handelApplyFilters()}>
