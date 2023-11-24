@@ -145,7 +145,7 @@ textarea {
 	margin-top: 10px;
 }
 
-button {
+.event-button {
 	background: #0f4c81;
 	color: #f5f7f6;
 	padding: 10px;
@@ -154,7 +154,7 @@ button {
 	cursor: pointer;
 }
 
-button:hover {
+.event-button:hover {
 	background: #ff5600;
 }
 

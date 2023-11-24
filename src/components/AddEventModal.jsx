@@ -112,18 +112,18 @@ const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
 		}
 	}, [location]);
 
-	const [buttonText, setButtonText] = useState("Save Event");
+	const [buttonText, setButtonText] = useState("Save Event1");
 	const participantValues = [1, 5, 10, 20, 50, 100];
 
 	useEffect(() => {
-		const maxParticipantValue = Math.max(...participantValues);
+		console.log("plannedParticipants:", plannedParticipants);
+		console.log("participantValues:", participantValues);
+	  
 		// Update the button text based on the plannedParticipants value
-		if (plannedParticipants >= maxParticipantValue) {
-			setButtonText("Send Request");
-		} else {
-			setButtonText("Save Event");
-		}
-	}, [plannedParticipants]);
+		const maxParticipantValue = participantValues[5];
+		setButtonText(plannedParticipants >= maxParticipantValue ? "Send Request" : "Save Event");
+	  }, [plannedParticipants, participantValues]);
+	  
 
 	const [warningMessage, setWarningMessage] = useState("");
 
@@ -138,45 +138,45 @@ const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
 	const handleSave = () => {
 		// Validate required fields
 		if (!eventName || !eventStartDate || !eventEndDate || !eventPlaceType) {
-			setWarningMessage("Please fill in all required fields.");
-			return;
+		  setWarningMessage("Please fill in all required fields.");
+		  return;
 		}
-
-		// Check if the plannedParticipants slider is at its maximum value
-		if (plannedParticipants >= Math.max(...participantValues)) {
-			// Send a request to the territory manager
-			sendRequestToTerritoryManager();
-			// Optionally, you can also show a confirmation message or perform additional actions
-			// Reset warning message after handling the request
-			setWarningMessage("");
+	  
+		// Prepare the event data
+		const eventData = {
+		  name: eventName,
+		  startDate: eventStartDate,
+		  endDate: eventEndDate,
+		  time: eventTime,
+		  fee: eventFee,
+		  category: eventCategory,
+		  subcategory: eventSubcategory,
+		  placeType: eventPlaceType,
+		  location: eventLocation,
+		  plannedParticipants: plannedParticipants,
+		  image: eventImages,
+		  description: eventDescription,
+		};
+	  
+		// Check the condition based on the plannedParticipants value
+		const maxParticipantValue = participantValues[5];
+	  
+		// Perform the corresponding action
+		if (plannedParticipants >= maxParticipantValue) {
+		  // Send a request to the territory manager
+		  sendRequestToTerritoryManager();
 		} else {
-			// Prepare the event data
-			const eventData = {
-				name: eventName,
-				startDate: eventStartDate,
-				endDate: eventEndDate,
-				time: eventTime,
-				fee: eventFee,
-				category: eventCategory,
-				subcategory: eventSubcategory,
-				placeType: eventPlaceType,
-				location: eventLocation,
-				plannedParticipants: plannedParticipants,
-				image: eventImages,
-				description: eventDescription,
-			};
-
-			// Call the onSave function with the event data
-			onSave(eventData);
-
-			// Reset warning message after successful save
-			setWarningMessage("");
+		  // Call the onSave function with the event data
+		  onSave(eventData);
 		}
-
+	  
+		// Reset warning message after successful save or request
+		setWarningMessage("");
+	  
 		// Close the modal
 		onClose();
-	};
-
+	  };
+	  
 	const [selectedCategory, setSelectedCategory] = useState("");
 	const [subcategories, setSubcategories] = useState([]);
 	const [selectedSubcategory, setSelectedSubcategory] = useState("");
@@ -251,7 +251,7 @@ const AddEventModal = ({ isOpen, onClose, onSave, location }) => {
 							onChange={(e) => setEventDescription(e.target.value)}
 						></textarea>
 					</label>
-					<button type="button" onClick={handleSave}>{buttonText}</button>
+					<button className="event-button" type="button" onClick={handleSave}>{buttonText}</button>
 					{warningMessage && <p style={{ color: "red" }}>{warningMessage}</p>}
 				</div>
 				<div className="right-half">
