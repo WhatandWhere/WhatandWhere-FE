@@ -1,13 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-scroll";
 import "../design-files-css/entry-page/Navbar.css";
 import Sidebar from "./SideBar";
 import { signOut } from "../../action/authActions";
 import { useAuth } from "../../context/context";
 
 export default function NavBar() {
+	// const [user, setUser] = useState(localStorage.getItem("auth_token"));
 	const user = useAuth();
-	const router = window.location.pathname;
+
 	return (
 		<div>
 			<nav className="navbar">
@@ -21,24 +22,19 @@ export default function NavBar() {
 					</a>
 
 					<div className="nav-buttons">
-						<Link to="/" className="nav-links">
+						<Link to="/" spy smooth offset={50} duration={700} className="nav-links">
 							Home
 						</Link>
-						{router === "/" ? (
-							<Link
-								to="g-wrapper"
-								spy
-								smooth
-								offset={50}
-								duration={700}
-								className="nav-links"
-							>
-								About
-							</Link>
-						) : (
-							""
-						)}
-
+						<Link
+							to="g-wrapper"
+							spy
+							smooth
+							offset={50}
+							duration={700}
+							className="nav-links"
+						>
+							About
+						</Link>
 						{!user.userToken ? (
 							<a href="/signup" className="primary-medium">
 								SIGN UP

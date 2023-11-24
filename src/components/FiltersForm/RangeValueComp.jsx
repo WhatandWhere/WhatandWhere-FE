@@ -5,14 +5,7 @@ import "../design-files-css/FiltersForm/RangeValueComp.css";
 
 let MIN = 5;
 let MAX = 100;
-export default function RangeValueComp({
-	children,
-	minValue,
-	maxValue,
-	unit,
-	secondaryInfo,
-	handelChange,
-}) {
+export default function RangeValueComp({ children, minValue, maxValue, unit, secondaryInfo }) {
 	const [values, setValues] = useState([MIN, MAX]);
 
 	MIN = minValue;
@@ -37,17 +30,7 @@ export default function RangeValueComp({
         </h4>
       </div> */}
 
-			<Slider
-				className="slider"
-				onChange={(event) => {
-					console.log("event", event);
-					setValues([event[0], event[1]]);
-					handelChange(event);
-				}}
-				value={values}
-				min={MIN}
-				max={MAX}
-			/>
+			<Slider className="slider" onChange={setValues} value={values} min={MIN} max={MAX} />
 		</div>
 	);
 }

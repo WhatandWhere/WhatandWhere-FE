@@ -30,15 +30,8 @@ function App() {
 								</ProtectedRoute>
 							}
 						/>
-						<Route
-							path="/profile"
-							element={
-								<ProtectedRoute>
-									<ProfilePage />
-								</ProtectedRoute>
-							}
-						/>
 						<Route path="/termsAndConditions" element={<TermsAndConditionsPage />} />
+						<Route path="/profile" element={<ProfilePage />} />
 						<Route path="/emprofile" element={<EventManagersProfilePage />} />
 						<Route path="*" element={<Navigate replace to="/" />} />
 					</Routes>
