@@ -1,16 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import EventListMainPage from "./EventListMainPage";
 import MapComponent from "./MapComponent";
 import AddEventModal from "./AddEventModal";
 import NavBar from "./entry-page/Navbar";
 import FiltersForm from "./FiltersForm/FiltersForm";
 import "./design-files-css/MainPageNew.css";
+// eslint-disable-next-line import/order
+import axios from "axios";
+import { backendLink } from "../action/authActions";
 
 function MainComponent() {
 	const [isEditMode, setIsEditMode] = useState(false);
 	const [newEventLocation, setNewEventLocation] = useState(null);
 	const [eventMarkers, setEventMarkers] = useState([]);
 	const [buttonClicked, setButtonClicked] = useState(false);
+
+	const [events, setEvents] = useState([]);
+
+	useEffect(() => {
+		axios
+			.get(`${backendLink}/api/events`, {
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
+				},
+			})
+			.then((res) => {
+				console.log(res.data);
+				setEvents(res.data);
+			});
+	}, []);
 
 	const toggleEditMode = () => {
 		setIsEditMode(!isEditMode);
@@ -89,7 +107,7 @@ function MainComponent() {
 			<NavBar />
 			<div className="filters-map-section">
 				<div className="filters-section">
-					<FiltersForm />
+					<FiltersForm setEvents={setEvents} />
 				</div>
 				<div className="map-component">
 					<MapComponent onMapClick={handleMapClick} newEventLocation={newEventLocation} />
@@ -112,7 +130,7 @@ function MainComponent() {
 			</button>
 
 			<div className="list-section">
-				<EventListMainPage />
+				<EventListMainPage events={events} />
 			</div>
 
 			{isEditMode && newEventLocation && (
