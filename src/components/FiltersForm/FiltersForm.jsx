@@ -34,8 +34,8 @@ export default function FiltersForm({ setEvents }) {
 				params: {
 					startDate: dateFilter.startDate ? dateFilter.startDate : null,
 					endDate: dateFilter.endDate ? dateFilter.endDate : null,
-					minPrice: enteranceFee.minValue !== null ? enteranceFee.minValue : null,
-					maxPrice: enteranceFee.maxValue !== null ? enteranceFee.maxValue : null,
+					minFee: enteranceFee.minValue !== null ? enteranceFee.minValue : null,
+					maxFee: enteranceFee.maxValue !== null ? enteranceFee.maxValue : null,
 					minAttendeeCount:
 						attendeeCount.minValue != null ? attendeeCount.minValue : null,
 					maxAttendeeCount:
