@@ -26,6 +26,7 @@ export default function FiltersForm({ setEvents }) {
 	useEffect(() => {
 		console.log(dateFilter);
 	}, [dateFilter]);
+
 	const handelApplyFilters = () => {
 		axios
 			.get(`${backendLink}/api/events`, {
@@ -90,9 +91,17 @@ export default function FiltersForm({ setEvents }) {
 		console.log(categories);
 		setCategory(categories);
 	};
+
+	const handelDateRange = (values) => {
+		setDateFilter({
+			startDate: values[0],
+			endDate: values[1],
+		});
+	};
+
 	return (
 		<section className="filters-form-container">
-			<DatePickerComp setDateFilter={setDateFilter} />
+			<DatePickerComp setDateFilter={handelDateRange} />
 			<RangeValueComp
 				minValue={0}
 				maxValue={400}

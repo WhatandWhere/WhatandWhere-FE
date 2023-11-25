@@ -1,14 +1,28 @@
-import React from "react";
+import { React, useState } from "react";
 import { DatePicker } from "antd";
 import "../design-files-css/FiltersForm/DatePickerComp.css";
 
 const { RangePicker } = DatePicker;
 
-export default function DatePickerComp() {
+export default function DatePickerComp({ setDateFilter }) {
+	const [dates, setDates] = useState([]);
+
 	return (
 		<div className="date-container">
 			<h3>Date of event</h3>
-			<RangePicker size="middle" />
+			<RangePicker
+				size="middle"
+				onChange={(values) => {
+					setDates(values);
+					if (values != null) {
+						const value1 = values[0].format("YYYY-MM-DD");
+						const value2 = values[1].format("YYYY-MM-DD");
+						setDateFilter([value1, value2]);
+					} else {
+						setDateFilter(values);
+					}
+				}}
+			/>
 		</div>
 	);
 }
