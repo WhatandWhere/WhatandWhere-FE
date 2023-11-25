@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const backendLink = "https://whatandwhere-3df40fb886ec.herokuapp.com";
+export const backendLink = "https://whatandwhere-3df40fb886ec.herokuapp.com";
 export const signUp = async (email, password, username, name, surname) => {
 	const result = await axios.post(`${backendLink}/api/user/signup`, {
 		email,
