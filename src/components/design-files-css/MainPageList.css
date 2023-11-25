@@ -35,7 +35,6 @@
 .event-list-container .event-list {
 	min-height: 40px;
 	width: 100%;
-	max-width: 1440px;
 	display: flex;
 	flex-wrap: nowrap; /* prevent wrapping, items will be in one line */
 	justify-content: flex-start; /* align items to the start of container */
