@@ -12,11 +12,13 @@ const options = [
 	{ value: "camping", label: "Camping" },
 ];
 
-export default function DropdownComp() {
+export default function DropdownComp({ handelChange }) {
 	const [selectedOptions, setSelectedOptions] = useState([]);
 
 	const handleChange = (selectedOption) => {
 		setSelectedOptions(selectedOption);
+		console.log("Option selected:", selectedOption);
+		handelChange(selectedOption);
 	};
 
 	const multi = true;

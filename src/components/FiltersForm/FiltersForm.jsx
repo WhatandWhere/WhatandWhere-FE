@@ -1,11 +1,94 @@
-import React from "react";
+import { React, useEffect, useState } from "react";
+import axios from "axios";
 import Button from "../entry-page/Button";
 import "../design-files-css/FiltersForm/FiltersForm.css";
 import RangeValueComp from "./RangeValueComp";
 import DropdownComp from "./DropdownComp";
 import DatePickerComp from "./DatePickerComp";
+import { backendLink } from "../../action/authActions";
 
-export default function FiltersForm() {
+export default function FiltersForm({ setEvents }) {
+	const [dateFilter, setDateFilter] = useState({
+		startDate: null,
+		endDate: null,
+	});
+	const [enteranceFee, setEnteranceFee] = useState({
+		minValue: 0,
+		maxValue: 400,
+	});
+	const [attendeeCount, setAttendeeCount] = useState({
+		minValue: 0,
+		maxValue: 400,
+	});
+	const [category, setCategory] = useState([]);
+
+	useEffect(() => {
+		console.log(dateFilter);
+	}, [dateFilter]);
+	const handelApplyFilters = () => {
+		axios
+			.get(`${backendLink}/api/events`, {
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
+				},
+				params: {
+					startDate: dateFilter.startDate ? dateFilter.startDate : null,
+					endDate: dateFilter.endDate ? dateFilter.endDate : null,
+					minFee: enteranceFee.minValue !== null ? enteranceFee.minValue : null,
+					maxFee: enteranceFee.maxValue !== null ? enteranceFee.maxValue : null,
+					minAttendeeCount:
+						attendeeCount.minValue != null ? attendeeCount.minValue : null,
+					maxAttendeeCount:
+						attendeeCount.maxValue !== null ? attendeeCount.maxValue : null,
+					categoryName: category.length !== 0 ? category : null,
+				},
+			})
+			.then((res) => {
+				console.log(res.data);
+				setEvents(res.data);
+			});
+	};
+	const handelResetFilters = () => {
+		setDateFilter({
+			startDate: null,
+			endDate: null,
+		});
+		setEnteranceFee({
+			minValue: 0,
+			maxValue: 10000,
+		});
+		setAttendeeCount({
+			minValue: 0,
+			maxValue: 10000,
+		});
+		axios
+			.get(`${backendLink}/api/events`, {
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
+				},
+			})
+			.then((res) => {
+				console.log(res.data);
+				setEvents(res.data);
+			});
+	};
+	const handelEntranceFee = (event) => {
+		setEnteranceFee({
+			minValue: event[0],
+			maxValue: event[1],
+		});
+	};
+	const handelAttendeeCount = (event) => {
+		setAttendeeCount({
+			minValue: event[0],
+			maxValue: event[1],
+		});
+	};
+	const handelCategoryFilter = (event) => {
+		const categories = event.map((category) => category.value);
+		console.log(categories);
+		setCategory(categories);
+	};
 	return (
 		<section className="filters-form-container">
 			<DatePickerComp />
@@ -25,7 +108,7 @@ export default function FiltersForm() {
 			>
 				Attendee count
 			</RangeValueComp>
-			<DropdownComp />
+			<DropdownComp handelChange={handelCategoryFilter} />
 
 			<div className="buttons-container">
 				<Button buttonStyle="primary-medium">Apply filters</Button>
