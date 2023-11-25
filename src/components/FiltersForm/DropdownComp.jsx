@@ -4,12 +4,12 @@ import Select from "react-select";
 import "../design-files-css/FiltersForm/DropdownComp.css";
 
 const options = [
-	{ value: "sport", label: "Sport" },
-	{ value: "music", label: "Music" },
-	{ value: "party", label: "Party" },
-	{ value: "programming", label: "Programming" },
-	{ value: "books", label: "Books" },
-	{ value: "camping", label: "Camping" },
+	{ value: "Sport", label: "Sport" },
+	{ value: "Music", label: "Music" },
+	{ value: "Party", label: "Party" },
+	{ value: "Programming", label: "Programming" },
+	{ value: "Books", label: "Books" },
+	{ value: "Camping", label: "Camping" },
 ];
 
 export default function DropdownComp({ handelChange }) {

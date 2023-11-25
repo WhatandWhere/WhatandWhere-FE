@@ -1,10 +1,11 @@
 import { React, useEffect, useState } from "react";
-import axios from "axios";
 import Button from "../entry-page/Button";
 import "../design-files-css/FiltersForm/FiltersForm.css";
 import RangeValueComp from "./RangeValueComp";
 import DropdownComp from "./DropdownComp";
 import DatePickerComp from "./DatePickerComp";
+// eslint-disable-next-line import/order
+import axios from "axios";
 import { backendLink } from "../../action/authActions";
 
 export default function FiltersForm({ setEvents }) {
@@ -91,28 +92,34 @@ export default function FiltersForm({ setEvents }) {
 	};
 	return (
 		<section className="filters-form-container">
-			<DatePickerComp />
+			<DatePickerComp setDateFilter={setDateFilter} />
 			<RangeValueComp
-				minValue={5}
+				minValue={0}
 				maxValue={400}
 				unit="zł"
 				secondaryInfo="Choose suitable range for you"
+				handelChange={handelEntranceFee}
 			>
 				Entrance Fee
 			</RangeValueComp>
 			<RangeValueComp
-				minValue={5}
-				maxValue={1000}
+				minValue={0}
+				maxValue={400}
 				unit="members"
 				secondaryInfo="Choose number of visitors"
+				handelChange={handelAttendeeCount}
 			>
 				Attendee count
 			</RangeValueComp>
 			<DropdownComp handelChange={handelCategoryFilter} />
 
 			<div className="buttons-container">
-				<Button buttonStyle="primary-medium">Apply filters</Button>
-				<Button buttonStyle="primary-medium">Reset Filters</Button>
+				<Button buttonStyle="primary-medium" onClick={() => handelApplyFilters()}>
+					Apply filters
+				</Button>
+				<Button buttonStyle="primary-medium" onClick={() => handelResetFilters()}>
+					Reset Filters
+				</Button>
 			</div>
 		</section>
 	);
