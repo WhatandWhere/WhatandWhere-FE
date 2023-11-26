@@ -13,13 +13,13 @@ export default function DatePickerComp({ setDateFilter }) {
 			<RangePicker
 				size="middle"
 				onChange={(values) => {
-					setDates(values);
 					if (values != null) {
 						const value1 = values[0].format("YYYY-MM-DD");
 						const value2 = values[1].format("YYYY-MM-DD");
 						setDateFilter([value1, value2]);
+						setDates([value1, value2]);
 					} else {
-						setDateFilter(values);
+						setDateFilter([null, null]);
 					}
 				}}
 			/>
