@@ -70,7 +70,7 @@
 	margin-bottom: 20px;
 }
 
-label {
+.modal label {
 	font-size: 1.1rem;
 	color: #34495e;
 	margin-bottom: 8px;
@@ -82,7 +82,7 @@ label {
 	margin-top: 10px;
 }
 
-input,
+.modal input,
 select,
 textarea {
 	width: 100%;
@@ -93,7 +93,7 @@ textarea {
 	border-radius: 4px;
 }
 
-textarea {
+.modal textarea {
 	resize: vertical;
 	max-height: 12em;
 }
@@ -145,7 +145,7 @@ textarea {
 	margin-top: 10px;
 }
 
-button {
+.modal button {
 	background: #0f4c81;
 	color: #f5f7f6;
 	padding: 10px;
@@ -154,7 +154,7 @@ button {
 	cursor: pointer;
 }
 
-button:hover {
+.modal button:hover {
 	background: #ff5600;
 }
 
