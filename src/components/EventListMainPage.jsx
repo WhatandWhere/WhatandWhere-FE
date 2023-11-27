@@ -25,7 +25,7 @@ function EventList({ events }) {
 		<div className="event-list-container">
 			<div className="event-list">
 				{events.map((event) => (
-					<EventItem key={event.id} event={event} />
+					<EventItem key={event.eventId} event={event} />
 				))}
 			</div>
 		</div>
