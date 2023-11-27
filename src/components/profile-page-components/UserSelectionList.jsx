@@ -1,11 +1,12 @@
 import React, { useState, useRef } from "react";
 import "../design-files-css/profile-page-css/UserSelectionList.css";
 
-function UserSelectionList() {
+function UserSelectionList({ handelTabChange }) {
 	const [selectedAction, setSelectedAction] = useState("myEvents");
 	const containerRef = useRef(null);
 
 	const handleActionClick = (action) => {
+		handelTabChange(action);
 		setSelectedAction(action);
 	};
 
