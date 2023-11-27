@@ -14,7 +14,7 @@ function EventItem({ event }) {
 				<img className="event-image" src={event.eventImages[0].url} alt={event.name} />
 				<h3 className="event-name">{event.eventName}</h3>
 				<p className="event-description">{event.eventDescription}</p>
-				<EventTags tags={event.tags} />
+				<EventTags tags={event.categories} />
 			</div>
 		</div>
 	);

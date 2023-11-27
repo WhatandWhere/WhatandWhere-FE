@@ -16,8 +16,8 @@ function EventTags({ tags = [] }) {
 	return (
 		<div className="event-tags" ref={tagsContainerRef}>
 			{tags.map((tag) => (
-				<div className="event-tag" key={tag}>
-					{tag}
+				<div className="event-tag" key={tag.categoryName}>
+					{tag.categoryName}
 				</div>
 			))}
 		</div>
