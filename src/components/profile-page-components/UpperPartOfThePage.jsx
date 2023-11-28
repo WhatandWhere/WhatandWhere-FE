@@ -1,15 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { backendLink } from "../../action/authActions";
 import "../design-files-css/profile-page-css/UpperPartOfThePage.css";
 
 function UpperPartOfThePage({ showEditButton }) {
-	const username = "MockUsername";
-	const userEmail = "m1@gmail.com";
-	const userPhone = "+9900000000";
 	const userProfilePic = "/placeholder-avatar.png";
 	const [isEditing, setIsEditing] = useState(false);
-	const [email, setEmail] = useState(userEmail);
-	const [phone, setPhone] = useState(userPhone);
+	const [email, setEmail] = useState("");
+	const [phone, setPhone] = useState("");
 	const [profilePic, setProfilePic] = useState(userProfilePic);
+	const [username, setUsername] = useState("");
+
+	useEffect(() => {
+		axios
+			.get(`${backendLink}/api/profile`, {
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
+				},
+			})
+			.then((profileInfo) => {
+				console.log(profileInfo.data);
+				setEmail(profileInfo.data.email);
+				if (profileInfo.data.phoneNumber === null) {
+					setPhone("+48000000000");
+				} else {
+					setPhone(profileInfo.data.phoneNumber);
+				}
+				setUsername(profileInfo.data.username);
+			});
+	}, [isEditing]);
 
 	// Function to handle profile picture change
 	const handleProfilePicChange = (e) => {
@@ -55,6 +74,22 @@ function UpperPartOfThePage({ showEditButton }) {
 			return;
 		}
 		// If we're not in edit mode, we will save the current values
+
+		const updateData = async () => {
+			const url = "";
+			const data = {
+				email,
+				phone,
+			};
+
+			try {
+				const response = await axios.put(url, data);
+				console.log(response.data);
+			} catch (error) {
+				console.log("Error: ", error);
+			}
+		};
+
 		console.log("Values saved:", {
 			email,
 			phone,
