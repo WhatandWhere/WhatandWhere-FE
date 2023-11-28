@@ -101,6 +101,7 @@ function UpperPartOfThePage({ showEditButton }) {
 		});
 		alert("Values saved!");
 		setIsEditing(false); // Exit editing mode
+		setIsImageUploaded(false);
 	};
 
 	return (

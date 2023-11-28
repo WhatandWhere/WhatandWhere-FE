@@ -8,11 +8,11 @@
     text-align: left;
 }
 
-.event-list-container::-webkit-scrollbar {
+.event-list::-webkit-scrollbar {
     width: 6px; /* Adjust the scrollbar width as needed */
 }
 
-.event-list-container::-webkit-scrollbar-track {
+.event-list::-webkit-scrollbar-track {
     background: transparent; /* Make the scrollbar track transparent */
 }
 
@@ -44,6 +44,7 @@
 }
 
 .event-list-container .event-item {
+    position: relative;
     display: inline-block;
     background: #bbbcbc;
     border-radius: 10px;
@@ -57,7 +58,7 @@
 
 .event-list-container .event-image {
     max-width: 100%;
-    max-height: 7.5em;
+    max-height: 7em;
     border-radius: 10px;
     margin-left: auto;
     margin-right: auto;
@@ -84,3 +85,41 @@
     border-radius: 5px; /* Adjust as necessary */
     font-size: 0.65rem; /* Smaller than the description font */
 }
+
+.remove-button-x {
+    position: absolute;
+    top: -0.5rem; /* Adjust as needed */
+    right: -0.5rem; /* Adjust as needed */
+    background: #a63939;
+    border: none; /* Remove border */
+    border-radius: 50%; /* Optional: for round button */
+    cursor: pointer;
+    padding: 0.5rem; /* Adjust padding as needed */
+    z-index: 10; /* Ensure it's above other content */
+    color: #ffffff;
+    width: 1.5rem; /* Width of the button */
+    height: 1.5rem; /* Height of the button */
+    display: flex;
+    align-items: center; /* Center the icon vertically */
+    justify-content: center;
+}
+
+.remove-button-x:hover {
+    opacity: 0.8; /* Optional: style for hover state */
+    color: #0f4c81;
+
+}
+
+/* Ensure that the click on the remove button doesn't trigger the event-item's click */
+.remove-button-x, .remove-button-x * {
+    pointer-events: auto;
+}
+
+.event-item-content, .event-item-content * {
+    pointer-events: none;
+}
+
+.event-item {
+    pointer-events: auto;
+}
+
