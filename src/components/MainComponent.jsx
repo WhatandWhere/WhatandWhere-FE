@@ -5,7 +5,7 @@ import MapComponent from "./MapComponent";
 import AddEventModal from "./AddEventModal";
 import NavBar from "./entry-page/Navbar";
 import FiltersForm from "./FiltersForm/FiltersForm";
-import "./design-files-css/MainPageNew.css";
+// import "./design-files-css/MainPageNew.css";
 // eslint-disable-next-line import/order
 import { backendLink } from "../action/authActions";
 

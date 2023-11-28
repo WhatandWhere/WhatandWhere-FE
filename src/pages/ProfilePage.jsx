@@ -32,13 +32,13 @@ function ProfilePage() {
 	// Function to render content based on the selected tab
 	function renderTabContent() {
 		if (selectedTab === "myEvents") {
-			return <EventListMainPage events={events} />;
+			return <EventListMainPage events={events} myEventsRemoveButton />;
 		}
 		if (selectedTab === "attending") {
-			return <EventListMainPage events={[events[0], events[1]]} />;
+			return <EventListMainPage events={[events[0], events[1]]} myEventsRemoveButton />;
 		}
 		if (selectedTab === "favorites") {
-			return <EventListMainPage events={[events[2], events[3]]} />;
+			return <EventListMainPage events={[events[2], events[3]]} myEventsRemoveButton />;
 		}
 		return null;
 	}

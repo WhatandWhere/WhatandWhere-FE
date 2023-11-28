@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { backendLink } from "../../action/authActions";
 import "../design-files-css/profile-page-css/UpperPartOfThePage.css";
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { backendLink } from "../../action/authActions";
 
 function UpperPartOfThePage({ showEditButton }) {
 	const userProfilePic = "/placeholder-avatar.png";
@@ -10,6 +14,7 @@ function UpperPartOfThePage({ showEditButton }) {
 	const [phone, setPhone] = useState("");
 	const [profilePic, setProfilePic] = useState(userProfilePic);
 	const [username, setUsername] = useState("");
+	const [isImageUploaded, setIsImageUploaded] = useState(false);
 
 	useEffect(() => {
 		axios
@@ -45,7 +50,7 @@ function UpperPartOfThePage({ showEditButton }) {
 				alert("File is too large. Please upload an image smaller than 2MB.");
 				return;
 			}
-
+			setIsImageUploaded(true);
 			setProfilePic(URL.createObjectURL(file));
 		}
 	};
@@ -96,6 +101,7 @@ function UpperPartOfThePage({ showEditButton }) {
 		});
 		alert("Values saved!");
 		setIsEditing(false); // Exit editing mode
+		setIsImageUploaded(false);
 	};
 
 	return (
@@ -109,6 +115,9 @@ function UpperPartOfThePage({ showEditButton }) {
 							onChange={handleProfilePicChange}
 							accept="image/*"
 						/>
+						{isImageUploaded && (
+							<FontAwesomeIcon icon={faCheck} className="uploaded-tick" />
+						)}
 					</div>
 				</div>
 			) : (

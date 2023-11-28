@@ -1,84 +1,134 @@
 .event-list-container {
-	bottom: 0;
-	width: 100%;
-	background: transparent; /* Remove gradient background from the page */
-	overflow-x: auto; /* Allow scrolling */
-	scrollbar-width: thin;
-	white-space: nowrap;
-	text-align: left;
+    bottom: 0;
+    width: 100%;
+    background: transparent; /* Remove gradient background from the page */
+    overflow-x: auto; /* Allow scrolling */
+    scrollbar-width: thin;
+    white-space: nowrap;
+    text-align: left;
 }
 
-.event-list-container::-webkit-scrollbar {
-	width: 6px; /* Adjust the scrollbar width as needed */
+.event-list::-webkit-scrollbar {
+    height: 6px; /* Adjust the scrollbar width as needed */
 }
 
-.event-list-container::-webkit-scrollbar-track {
-	background: transparent; /* Make the scrollbar track transparent */
+.event-list::-webkit-scrollbar-track {
+    background: #101820FF; /* Light grey track, visible against most backgrounds */
+}
+
+.event-list::-webkit-scrollbar-thumb {
+    background: #c0c0c0; /* Darker grey thumb for contrast against the track */
+    border-radius: 10px; /* Optional: adds rounded corners to the scrollbar thumb */
+}
+
+.event-list::-webkit-scrollbar-thumb:hover {
+    background: #a0a0a0; /* Even darker grey when hovering over the thumb */
 }
 
 .event-list-container .event-name {
-	white-space: nowrap; /* Prevent text from wrapping */
-	overflow: hidden; /* Hide overflowing text */
-	text-overflow: ellipsis; /* Add ellipsis (...) for overflow */
-	max-width: 100%; /* Set the maximum width for the description and name */
-	font-size: 1.15rem; /* Adjust font size as needed */
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Add ellipsis (...) for overflow */
+    max-width: 100%; /* Set the maximum width for the description and name */
+    font-size: 1.15rem; /* Adjust font size as needed */
 }
 
 .event-list-container .event-description {
-	white-space: nowrap; /* Prevent text from wrapping */
-	overflow: hidden; /* Hide overflowing text */
-	text-overflow: ellipsis; /* Add ellipsis (...) for overflow */
-	max-width: 100%;
-	font-size: 1rem;
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Add ellipsis (...) for overflow */
+    max-width: 100%;
+    font-size: 1rem;
 }
 
 .event-list-container .event-list {
-	min-height: 40px;
-	width: 100%;
-	display: flex;
-	flex-wrap: nowrap; /* prevent wrapping, items will be in one line */
-	justify-content: flex-start; /* align items to the start of container */
-	align-items: center;
-	overflow-x: auto;
-	padding: 10px;
+    min-height: 40px;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap; /* prevent wrapping, items will be in one line */
+    justify-content: flex-start; /* align items to the start of container */
+    align-items: center;
+    overflow-x: auto;
+    padding: 10px;
 }
 
 .event-list-container .event-item {
-	display: inline-block;
-	background: #bbbcbc;
-	border-radius: 10px;
-	margin: 0.7rem; /* Adjust margin for spacing */
-	cursor: pointer;
-	transition: transform 0.2s;
-	width: 10%;
-	min-width: 15rem;
-	height: 15rem;
+    position: relative;
+    display: inline-block;
+    background: #bbbcbc;
+    border-radius: 10px;
+    margin: 0.7rem; /* Adjust margin for spacing */
+    cursor: pointer;
+    transition: transform 0.2s;
+    width: 10%;
+    min-width: 15rem;
+    height: 15rem;
 }
 
 .event-list-container .event-image {
-	max-width: 100%; /* Adjust the image size as needed */
-	max-height: 15rem;
-	border-radius: 10px;
+    max-width: 100%;
+    max-height: 7em;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .event-list-container .event-item:hover {
-	transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 .event-list-container .event-item-content {
-	padding: 0.7rem;
+    padding: 0.7rem;
 }
 
 .event-tags {
-	display: flex;
-	gap: 0.5rem; /* Space between tags */
-	/* padding-top: 0.5rem;  */
-	/* Space above the tags */
+    display: flex;
+    gap: 0.5rem; /* Space between tags */
+    /* padding-top: 0.5rem;  */
+    /* Space above the tags */
 }
 
 .event-tag {
-	background: #f5f7f6;
-	padding: 0.25rem 0.5rem; /* Adjust as necessary */
-	border-radius: 5px; /* Adjust as necessary */
-	font-size: 0.65rem; /* Smaller than the description font */
+    background: #f5f7f6;
+    padding: 0.25rem 0.5rem; /* Adjust as necessary */
+    border-radius: 5px; /* Adjust as necessary */
+    font-size: 0.65rem; /* Smaller than the description font */
 }
+
+.remove-button-x {
+    position: absolute;
+    top: -0.5rem; /* Adjust as needed */
+    right: -0.5rem; /* Adjust as needed */
+    background: #a63939;
+    border: none; /* Remove border */
+    border-radius: 50%; /* Optional: for round button */
+    cursor: pointer;
+    padding: 0.5rem; /* Adjust padding as needed */
+    z-index: 10; /* Ensure it's above other content */
+    color: #ffffff;
+    width: 1.5rem; /* Width of the button */
+    height: 1.5rem; /* Height of the button */
+    display: flex;
+    align-items: center; /* Center the icon vertically */
+    justify-content: center;
+}
+
+.remove-button-x:hover {
+    opacity: 0.8; /* Optional: style for hover state */
+    color: #0f4c81;
+
+}
+
+/* Ensure that the click on the remove button doesn't trigger the event-item's click */
+.remove-button-x, .remove-button-x * {
+    pointer-events: auto;
+}
+
+.event-item-content, .event-item-content * {
+    pointer-events: none;
+}
+
+.event-item {
+    pointer-events: auto;
+}
+

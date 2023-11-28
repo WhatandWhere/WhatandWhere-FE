@@ -1,6 +1,6 @@
 import React from "react";
 import MainComponent from "../components/MainComponent";
-import "../components/design-files-css/MainPage.css";
+import "../components/design-files-css/MainPageNew.css";
 
 function MainPage() {
 	return (
