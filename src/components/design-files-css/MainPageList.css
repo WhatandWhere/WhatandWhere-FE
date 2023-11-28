@@ -9,11 +9,20 @@
 }
 
 .event-list::-webkit-scrollbar {
-    width: 6px; /* Adjust the scrollbar width as needed */
+    height: 6px; /* Adjust the scrollbar width as needed */
 }
 
 .event-list::-webkit-scrollbar-track {
-    background: transparent; /* Make the scrollbar track transparent */
+    background: #101820FF; /* Light grey track, visible against most backgrounds */
+}
+
+.event-list::-webkit-scrollbar-thumb {
+    background: #c0c0c0; /* Darker grey thumb for contrast against the track */
+    border-radius: 10px; /* Optional: adds rounded corners to the scrollbar thumb */
+}
+
+.event-list::-webkit-scrollbar-thumb:hover {
+    background: #a0a0a0; /* Even darker grey when hovering over the thumb */
 }
 
 .event-list-container .event-name {
