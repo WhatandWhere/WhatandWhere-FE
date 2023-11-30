@@ -9,6 +9,7 @@ import { backendLink } from "../../action/authActions";
 
 function UpperPartOfThePage({ showEditButton }) {
 	const userProfilePic = "/placeholder-avatar.png";
+	const [user, setUser] = useState([]);
 	const [isEditing, setIsEditing] = useState(false);
 	const [email, setEmail] = useState("");
 	const [phone, setPhone] = useState("");
@@ -32,6 +33,7 @@ function UpperPartOfThePage({ showEditButton }) {
 					setPhone(profileInfo.data.phoneNumber);
 				}
 				setUsername(profileInfo.data.username);
+				setUser(profileInfo.data);
 			});
 	}, [isEditing]);
 
@@ -80,20 +82,25 @@ function UpperPartOfThePage({ showEditButton }) {
 		}
 		// If we're not in edit mode, we will save the current values
 
-		const updateData = async () => {
-			const url = "";
-			const data = {
-				email,
-				phone,
-			};
-
-			try {
-				const response = await axios.put(url, data);
-				console.log(response.data);
-			} catch (error) {
-				console.log("Error: ", error);
-			}
+		const url = `${backendLink}/api/profile`;
+		const data = {
+			name: user.name,
+			surname: user.surname,
+			email,
+			phoneNumber: phone,
+			birthDate: user.birthDate,
 		};
+
+		axios
+			.put(url, data, {
+				headers: { Authorization: `Bearer ${localStorage.getItem("auth_token")}` },
+			})
+			.then((response) => {
+				console.log(response);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
 
 		console.log("Values saved:", {
 			email,
