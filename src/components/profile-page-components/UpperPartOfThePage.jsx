@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import validator from "validator";
 import "../design-files-css/profile-page-css/UpperPartOfThePage.css";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -57,17 +58,8 @@ function UpperPartOfThePage({ showEditButton }) {
 		}
 	};
 
-	// Function to validate email using regex pattern
-	const validateEmail = (email) => {
-		const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Simple email regex pattern
-		return re.test(email);
-	};
-
-	// Function to validate phone number to ensure it starts with a plus and contains digits
-	const validatePhone = (phone) => {
-		const re = /^\+[0-9]*$/; // Phone number regex pattern
-		return re.test(phone);
-	};
+	const validateEmail = (email) => validator.isEmail(email);
+	const validatePhone = (phone) => validator.isMobilePhone(phone, "any", { strictMode: false });
 
 	// Call this function to save changes
 	const saveChanges = () => {
