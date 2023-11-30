@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+// eslint-disable-next-line import/no-extraneous-dependencies
+import validator from "validator";
 import "../design-files-css/profile-page-css/UpperPartOfThePage.css";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -27,7 +29,7 @@ function UpperPartOfThePage({ showEditButton }) {
 				console.log(profileInfo.data);
 				setEmail(profileInfo.data.email);
 				if (profileInfo.data.phoneNumber === null) {
-					setPhone("+48000000000");
+					setPhone("+48555555555");
 				} else {
 					setPhone(profileInfo.data.phoneNumber);
 				}
@@ -55,18 +57,11 @@ function UpperPartOfThePage({ showEditButton }) {
 		}
 	};
 
-	// Function to validate email using regex pattern
-	const validateEmail = (email) => {
-		const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Simple email regex pattern
-		return re.test(email);
-	};
+	const validateEmail = (email) => validator.isEmail(email);
 
-	// Function to validate phone number to ensure it starts with a plus and contains digits
-	const validatePhone = (phone) => {
-		const re = /^\+[0-9]*$/; // Phone number regex pattern
-		return re.test(phone);
-	};
-
+	const validatePhone = (phone) =>
+		// 'any' can be replaced with a specific locale or an array of locales if needed
+		validator.isMobilePhone(phone, "any", { strictMode: false });
 	// Call this function to save changes
 	const saveChanges = () => {
 		// Validate email and phone before saving
