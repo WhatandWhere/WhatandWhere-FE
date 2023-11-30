@@ -1,0 +1,55 @@
+/* UserBar.css */
+
+.user-info {
+	background-color: rgb(2, 2, 34);
+	color: white;
+	margin-bottom: 2rem;
+	padding: 10px 20px;
+	border-radius: 30px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	margin-left: 23rem;
+	margin-right: 0rem;
+}
+
+.user-text {
+	font-size: 2rem;
+	display: flex;
+	align-items: center;
+}
+
+.user-text-gap {
+	margin: 0 0.5rem; /* Gap between username and authority */
+}
+
+/* Styles for edit and delete buttons with gradient background */
+.user-bar-icon-edit,
+.user-bar-icon-delete {
+	color: white;
+}
+
+.user-bar-icon-edit {
+	background: linear-gradient(to right, #fbc531, #e1b12c);
+	width: 3rem;
+}
+
+.user-bar-icon-delete {
+	background: linear-gradient(to right, #c31432, rgb(165, 64, 36));
+	/* Add padding, margin, border-radius as needed */
+	width: 3rem;
+}
+
+/* Ensure icons inside buttons are white */
+.user-bar .MuiIconButton-root .MuiSvgIcon-root {
+	color: white;
+}
+
+/* Container for the action buttons */
+.action-buttons {
+	display: flex;
+	justify-content: flex-end; /* Align buttons to the right */
+	flex: 1; /* Take up the remaining space */
+	gap: 0.5rem;
+}
