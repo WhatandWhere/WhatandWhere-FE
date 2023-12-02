@@ -1,0 +1,65 @@
+.authority-change-menu {
+	position: fixed; /* Position it relative to the viewport */
+	top: 50%; /* Position it at the center */
+	left: 50%;
+	transform: translate(-50%, -50%); /* Align center */
+	width: 300px; /* Width of the menu */
+	padding: 20px;
+	background: white;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	z-index: 100; /* Make sure it's above other content */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.authority-change-header {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.exit-button {
+	padding: 10px 20px;
+	margin-top: 10px;
+	width: calc(100% - 40px); /* Adjust width considering padding */
+	background-color: rgb(216, 29, 29); /* Green background */
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.exit-button:hover {
+	background-color: #d32f2f; /* Darker red on hover */
+}
+
+select {
+	width: 100%;
+	margin: 10px 0;
+	padding: 10px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+}
+
+button.save-button {
+	padding: 10px 20px;
+	margin-top: 10px;
+	width: calc(100% - 40px); /* Adjust width considering padding */
+	background-color: #4caf50; /* Green background */
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+button.save-button:hover {
+	background-color: #45a049; /* Slightly darker green on hover for better interaction */
+}
+
+h3 {
+	margin-bottom: 15px;
+}
