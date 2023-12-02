@@ -1,18 +1,41 @@
 .admin-page-container {
+	position: relative;
 	display: flex;
 	flex-direction: column;
-
-	height: 100vh;
+	gap: 40px;
+	justify-content: center;
+	overflow: hidden;
+	height: 100%;
 }
 
-.hero-section-container {
-	height: 100%;
+.admin-page-container::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
 	background-image: url("../../../imgs/background-img.jpg");
 	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
+	filter: blur(10px);
+	z-index: -1;
+	box-shadow: 0 0 0 30px black;
+}
 
-	/* filter: blur(13px); */
-	/* box-shadow: 0 0 0 30px black; */
+.user-list-container {
+	min-height: 90vh;
+
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+.admin-page-container ul {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	margin: 0 auto;
+}
+
+.admin-page-container li {
+	min-width: 400px;
 }
