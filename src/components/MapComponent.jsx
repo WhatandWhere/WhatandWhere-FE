@@ -94,8 +94,9 @@ function MapComponent({ onMapClick, newEventLocation }) {
 		/* Cleanup when the component unmounts */
 		return () => {
 			if (map) {
-				map.off("click", clickHandler);
-				map.removeControl(locateControl);
+				map.off("click", clickHandler); // Remove the click handler
+
+				// Check if locateControl exists and is added to the map before removing it
 			}
 		};
 	}, [onMapClick, handleClick]);
