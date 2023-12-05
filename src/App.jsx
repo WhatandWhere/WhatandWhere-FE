@@ -7,6 +7,7 @@ import SignupPage from "./pages/SignupPage";
 import MainPage from "./pages/MainPage";
 import ProfilePage from "./pages/ProfilePage";
 import AdminPage from "./pages/AdminPage";
+import ManagerPage from "./pages/ManagerPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage";
 import ProtectedRoute from "./components/utilcomponents/protectedRoute";
 // eslint-disable-next-line import/no-named-as-default
@@ -31,6 +32,7 @@ function App() {
 								</ProtectedRoute>
 							}
 						/>
+						<Route path="/managerpage" element={<ManagerPage />} />
 						<Route path="/adminpage" element={<AdminPage />} />
 						<Route path="/termsAndConditions" element={<TermsAndConditionsPage />} />
 						<Route path="/profile" element={<ProfilePage />} />
