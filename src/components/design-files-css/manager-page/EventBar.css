@@ -1,49 +1,46 @@
 /* EventBar.css */
 
-.event-bar {
-    background-color: rgb(2, 2, 34);
-    color: white;
-    margin-bottom: 2rem;
-    padding: 10px 20px;
-    border-radius: 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    margin-left: 0rem;
-    margin-right: 0rem;
+.manager-page-container .event-bar {
+	background-color: rgb(2, 2, 34);
+	color: white;
+	margin-bottom: 2rem;
+	padding: 10px 20px;
+	border-radius: 30px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	margin-left: 0rem;
+	margin-right: 0rem;
 }
 
-.event-name {
-    font-size: 2rem;
-    display: flex;
-    align-items: center;
+.manager-page-container .event-name {
+	font-size: 2rem;
+	display: flex;
+	align-items: center;
 }
 
-
-.event-bar-icon-view-details {
-    background: linear-gradient(to right, #fbc531, #e1b12c);
-    width: 3rem;
+.manager-page-container .event-bar-icon-view-details {
+	background: linear-gradient(to right, #fbc531, #e1b12c);
+	width: 3rem;
 }
 
-.event-bar-icon-accept {
-    background: linear-gradient(to right, #14c33d, rgb(36, 165, 40));
-    /* Add padding, margin, border-radius as needed */
-    width: 3rem;
-
+.manager-page-container .event-bar-icon-accept {
+	background: linear-gradient(to right, #14c33d, rgb(36, 165, 40));
+	/* Add padding, margin, border-radius as needed */
+	width: 3rem;
 }
 
-.event-bar-icon-reject {
-    background: linear-gradient(to right, #c31432, rgb(165, 64, 36));
-    /* Add padding, margin, border-radius as needed */
-    width: 3rem;
-
+.manager-page-container .event-bar-icon-reject {
+	background: linear-gradient(to right, #c31432, rgb(165, 64, 36));
+	/* Add padding, margin, border-radius as needed */
+	width: 3rem;
 }
 
 /* Container for the action buttons */
-.action-buttons {
-    display: flex;
-    justify-content: flex-end;
-    flex: 1;
-    gap: 0.5rem;
+.manager-page-container .action-buttons {
+	display: flex;
+	justify-content: flex-end;
+	flex: 1;
+	gap: 0.5rem;
 }

@@ -1,11 +1,11 @@
 .manager-search-bar-input {
-    /* Style for the input field */
-    width: 30rem; /* Adjust as per your design */
-    margin: 0 auto;
-    display: inline-block;
+	/* Style for the input field */
+	width: 30rem; /* Adjust as per your design */
+	margin: 0 auto;
+	display: inline-block;
 }
 
-.search-bar-container {
-   max-width: 40rem;
-   background-color: rgba(0, 0, 0, 0);
+.manager-form-container .search-bar-container {
+	max-width: 40rem;
+	background-color: rgba(0, 0, 0, 0);
 }
