@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-scroll";
 import "../design-files-css/entry-page/Navbar.css";
+import logoForHeader from "./logoForHeader.png";
 import Sidebar from "./SideBar";
 import { signOut } from "../../action/authActions";
 import { useAuth } from "../../context/context";
@@ -18,7 +19,7 @@ export default function NavBar() {
 							<div className="title-primary">What and</div>
 							<div className="title-secondary">Where</div>
 						</div>
-						<img className="nav-logo" src="./logoForHeader.png" alt="Logo" />
+						<img className="nav-logo" src={logoForHeader} alt="Logo" />
 					</a>
 
 					<div className="nav-buttons">

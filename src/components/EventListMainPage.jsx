@@ -1,5 +1,6 @@
 import React from "react";
 import "./design-files-css/MainPageList.css";
+import { useNavigate } from "react-router-dom";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -7,8 +8,10 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import EventTags from "./EventTags";
 
 function EventItem({ event, myEventsRemoveButton }) {
+	const navigate = useNavigate();
+
 	const handleClick = () => {
-		// add here onClick handler to redirect to the event info
+		navigate(`/event/${event.eventId}`);
 	};
 
 	const handleRemove = () => {

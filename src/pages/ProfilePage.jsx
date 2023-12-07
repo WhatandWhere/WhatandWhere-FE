@@ -10,6 +10,23 @@ import { backendLink } from "../action/authActions";
 function ProfilePage() {
 	const [selectedTab, setSelectedTab] = useState("myEvents");
 	const [events, setEvents] = useState([]);
+	const [attending, setAttending] = useState([]);
+	const [favourite, setFavourite] = useState([]);
+	const [userInfo, setUserInfo] = useState({});
+
+	useEffect(() => {
+		axios
+			.get(`${backendLink}/api/profile`, {
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
+				},
+			})
+			.then((profileInfo) => {
+				console.log(profileInfo.data.attendingEvents);
+				setUserInfo(profileInfo.data);
+				setAttending(profileInfo.data.attendingEvents);
+			});
+	}, []);
 
 	useEffect(() => {
 		axios
@@ -24,6 +41,19 @@ function ProfilePage() {
 			});
 	}, []);
 
+	useEffect(() => {
+		axios
+			.get(`${backendLink}/api/favorite-events`, {
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
+				},
+			})
+			.then((favouriteEvents) => {
+				console.log(favouriteEvents.data);
+				setFavourite(favouriteEvents.data);
+			});
+	}, []);
+
 	const handelTabChange = (newTab) => {
 		// console.log(newTab);
 		setSelectedTab(newTab);
@@ -35,10 +65,10 @@ function ProfilePage() {
 			return <EventListMainPage events={events} myEventsRemoveButton />;
 		}
 		if (selectedTab === "attending") {
-			return <EventListMainPage events={[events[0], events[1]]} myEventsRemoveButton />;
+			return <EventListMainPage events={attending} myEventsRemoveButton />;
 		}
 		if (selectedTab === "favorites") {
-			return <EventListMainPage events={[events[2], events[3]]} myEventsRemoveButton />;
+			return <EventListMainPage events={events} myEventsRemoveButton />;
 		}
 		return null;
 	}

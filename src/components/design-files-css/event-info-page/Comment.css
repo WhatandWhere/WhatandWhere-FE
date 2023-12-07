@@ -1,0 +1,51 @@
+.comment {
+	display: flex;
+	gap: 30px;
+
+	background-color: #fff;
+	border-radius: 4px;
+	padding: 10px 15px;
+	margin-bottom: 10px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	transition: box-shadow 0.3s ease-in-out;
+}
+
+.comment:hover {
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.username {
+	display: block;
+	color: #333;
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.comment-text {
+	color: #666;
+	font-size: 14px;
+	line-height: 1.5;
+	margin-top: 5px;
+}
+
+.star-rating {
+	float: right;
+	line-height: 1;
+}
+
+.star {
+	font-size: 20px;
+	color: #ffd700;
+	padding: 0 2px;
+}
+
+.star.filled {
+	color: #ffd700;
+}
+
+.comment:after {
+	content: "";
+	display: table;
+	clear: both;
+}

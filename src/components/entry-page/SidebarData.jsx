@@ -20,7 +20,7 @@ export const SidebarData = [
 	},
 	{
 		title: "Admin",
-		path: "/",
+		path: "/adminpage",
 		icon: <RiIcons.RiAdminFill />,
 		cName: "nav-text",
 	},
@@ -32,7 +32,7 @@ export const SidebarData = [
 	},
 	{
 		title: "Tm events",
-		path: "/",
+		path: "/managerpage",
 		icon: <BiIcons.BiSolidParty />,
 		cName: "nav-text",
 	},

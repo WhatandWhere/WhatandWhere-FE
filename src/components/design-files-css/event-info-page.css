@@ -1,0 +1,56 @@
+.button-container .icon-button {
+	border: none;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	cursor: pointer;
+	font-size: 24px;
+	color: black;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+	transition:
+		background-color 0.3s ease,
+		transform 0.3s ease,
+		box-shadow 0.3s ease;
+	outline: none;
+}
+
+.button-container .checkmark-button {
+	background-color: #ffa500;
+}
+
+.button-container .active {
+	background-color: green;
+}
+
+.button-container .active:hover {
+	transform: scale(1.1);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+	background-color: green;
+}
+
+.star-button {
+	background-color: #ffd700;
+}
+
+.icon-button:hover {
+	transform: scale(1.1);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+	background-color: #e69500;
+}
+
+.icon-button:active {
+	background-color: #cc8400;
+	transform: scale(1);
+}
+
+.icon {
+	line-height: 1;
+}
+
+.comment-section {
+	width: 500px;
+}

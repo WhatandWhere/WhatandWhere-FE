@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, React } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import EventList from "./EventList";
 import SearchBar from "./SearchBar";
@@ -10,6 +11,8 @@ const backendLink = "https://whatandwhere-3df40fb886ec.herokuapp.com";
 function ManagerComponent() {
 	const [events, setEvents] = useState([]);
 	const [searchTerm, setSearchTerm] = useState("");
+
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		const fetchEvents = async () => {
@@ -38,17 +41,15 @@ function ManagerComponent() {
 		: events;
 
 	const handleAcceptEvent = (eventId) => {
-		// Logic to accept event
 		console.log("Accept event:", eventId);
 	};
 
 	const handleRejectEvent = (eventId) => {
-		// Logic to reject event
 		console.log("Reject event:", eventId);
 	};
 
 	const handleViewEventDetails = (eventId) => {
-		// Logic to view event details
+		navigate(`/event/${eventId}`);
 		console.log("View details for event:", eventId);
 	};
 

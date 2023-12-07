@@ -4,6 +4,7 @@ import VisibilityRoundedIcon from "@mui/icons-material/VisibilityRounded";
 import ClearRoundedIcon from "@mui/icons-material/ClearRounded";
 import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
 import "../design-files-css/manager-page/EventBar.css";
+import { Link } from "react-router-dom";
 
 function EventBar({ event, onAccept, onReject, onViewDetails }) {
 	return (

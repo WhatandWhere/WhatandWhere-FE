@@ -13,6 +13,7 @@ import ProtectedRoute from "./components/utilcomponents/protectedRoute";
 // eslint-disable-next-line import/no-named-as-default
 import AuthProvider from "./context/context";
 import EventManagersProfilePage from "./pages/EventManagersProfilePage";
+import EventInfoPage from "./pages/EventInfoPage";
 import "./App.css";
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
 						<Route path="/termsAndConditions" element={<TermsAndConditionsPage />} />
 						<Route path="/profile" element={<ProfilePage />} />
 						<Route path="/emprofile" element={<EventManagersProfilePage />} />
+						<Route path="/event/:eventId" element={<EventInfoPage />} />
 						<Route path="*" element={<Navigate replace to="/" />} />
 					</Routes>
 				</div>
